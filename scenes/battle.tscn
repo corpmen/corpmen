@@ -1,0 +1,322 @@
+[gd_scene format=3 uid="uid://cscxkkv3b023p"]
+
+[ext_resource type="Texture2D" uid="uid://qdu5h7itiyiu" path="res://assets/characters/manager.png" id="1_dn72j"]
+[ext_resource type="Script" uid="uid://dm86pjn863hxl" path="res://scenes/battle.gd" id="1_lpir7"]
+[ext_resource type="Texture2D" uid="uid://br3b5codhu6wj" path="res://assets/tilemaps/battle-bg.png" id="1_th188"]
+[ext_resource type="Texture2D" uid="uid://dgcet3lc2ngci" path="res://assets/characters/player-battle.png" id="3_p1qf1"]
+[ext_resource type="Theme" uid="uid://dvpuhpx7vcf23" path="res://theme/default_theme.tres" id="4_a12nh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th188"]
+bg_color = Color(0.09803922, 0.85490197, 0.21960784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1qf1"]
+bg_color = Color(0.09803922, 0.85490197, 0.21960784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7i3o"]
+bg_color = Color(0.18958932, 0.542226, 0.90927887, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vh42"]
+bg_color = Color(0.003921569, 0.03137255, 0.039215688, 0.93333334)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a12nh"]
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.8784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03edq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22uqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ni85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpir7"]
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vceff"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k1nj"]
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekamt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ngm"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djc8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.8156863)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahae"]
+bg_color = Color(0, 0, 0, 0.78039217)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="battle" type="CanvasLayer" unique_id=2084312181]
+script = ExtResource("1_lpir7")
+
+[node name="Control" type="Control" parent="." unique_id=188130860]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="Control" unique_id=1166498719]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("1_th188")
+
+[node name="Monster" type="TextureRect" parent="Control" unique_id=1619185342]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -265.0
+offset_right = 203.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dn72j")
+
+[node name="MonsterStatus" type="MarginContainer" parent="Control" unique_id=1419009324]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 13.0
+offset_right = 180.0
+offset_bottom = 53.0
+
+[node name="GridContainer" type="GridContainer" parent="Control/MonsterStatus" unique_id=1147672268]
+layout_mode = 2
+columns = 6
+
+[node name="Monster1" type="Label" parent="Control/MonsterStatus/GridContainer" unique_id=571643250]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Bad Manager"
+
+[node name="Monster1A" type="Label" parent="Control/MonsterStatus/GridContainer" unique_id=2055172360]
+layout_mode = 2
+
+[node name="MonsterHealth" type="ProgressBar" parent="Control/MonsterStatus/GridContainer/Monster1A" unique_id=457890108]
+layout_mode = 0
+offset_left = -129.0
+offset_top = 38.0
+offset_right = 229.0
+offset_bottom = 66.0
+theme_override_styles/background = SubResource("StyleBoxFlat_th188")
+value = 100.0
+show_percentage = false
+
+[node name="MonsterDetail" type="Label" parent="Control/MonsterStatus/GridContainer/Monster1A/MonsterHealth" unique_id=853440515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerStatus" type="MarginContainer" parent="Control" unique_id=1595230001]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 521.0
+offset_right = 424.0
+offset_bottom = 640.0
+
+[node name="GridContainer" type="GridContainer" parent="Control/PlayerStatus" unique_id=2097516807]
+layout_mode = 2
+
+[node name="Player" type="Label" parent="Control/PlayerStatus/GridContainer" unique_id=1694315894]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Stephen"
+
+[node name="PlayerA" type="Label" parent="Control/PlayerStatus/GridContainer" unique_id=1722155576]
+layout_mode = 2
+
+[node name="PlayerHealth" type="ProgressBar" parent="Control/PlayerStatus/GridContainer/PlayerA" unique_id=1447203202]
+custom_minimum_size = Vector2(356, 27)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 257.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_p1qf1")
+value = 80.0
+show_percentage = false
+
+[node name="PlayerDetail" type="Label" parent="Control/PlayerStatus/GridContainer/PlayerA/PlayerHealth" unique_id=272360869]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Stamina" type="Label" parent="Control/PlayerStatus/GridContainer" unique_id=1676964258]
+layout_mode = 2
+
+[node name="StaminaProgress" type="ProgressBar" parent="Control/PlayerStatus/GridContainer/Stamina" unique_id=100132884]
+custom_minimum_size = Vector2(356, 27)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 7.0
+offset_right = 256.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_v7i3o")
+show_percentage = false
+
+[node name="StaminaDetail" type="Label" parent="Control/PlayerStatus/GridContainer/Stamina/StaminaProgress" unique_id=805157657]
+layout_mode = 0
+offset_right = 423.0
+offset_bottom = 23.0
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Player" type="TextureRect" parent="Control" unique_id=1964153871]
+texture_filter = 1
+layout_mode = 0
+offset_left = 387.0
+offset_top = 266.0
+offset_right = 515.0
+offset_bottom = 394.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_p1qf1")
+
+[node name="MenuBack" type="Panel" parent="Control" unique_id=1561362305]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 426.0
+offset_right = 1111.0
+offset_bottom = 611.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vh42")
+
+[node name="ActionMenu" type="VBoxContainer" parent="Control" unique_id=1588163399]
+layout_mode = 0
+offset_left = 938.0
+offset_top = 437.0
+offset_right = 1075.0
+offset_bottom = 575.0
+mouse_filter = 2
+theme = ExtResource("4_a12nh")
+
+[node name="ActionLabel" type="Label" parent="Control/ActionMenu" unique_id=2075513991]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Actions"
+
+[node name="Attack" type="Button" parent="Control/ActionMenu" unique_id=1690237020]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_03edq")
+text = "Attack"
+
+[node name="Item" type="Button" parent="Control/ActionMenu" unique_id=1097787837]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_22uqi")
+text = "Item"
+
+[node name="Special" type="Button" parent="Control/ActionMenu" unique_id=885396422]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6ni85")
+text = "Special"
+
+[node name="Flee" type="Button" parent="Control/ActionMenu" unique_id=757513158]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpir7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vceff")
+text = "Flee
+"
+
+[node name="Skip" type="Button" parent="Control/ActionMenu" unique_id=1213059250]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4k1nj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ekamt")
+text = "Skip Turn"
+
+[node name="Exit" type="Button" parent="Control/ActionMenu" unique_id=965828658]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_66ngm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_djc8l")
+text = "Exit"
+
+[node name="Status" type="Label" parent="Control" unique_id=1307296687]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 215.0
+offset_right = 705.0
+offset_bottom = 274.0
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_f4pi3")
+text = "Enemy's Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionDetail" type="Label" parent="Control" unique_id=2038495224]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 140.0
+offset_right = 1036.0
+offset_bottom = 321.0
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_yahae")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Control/ActionMenu/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Control/ActionMenu/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Control/ActionMenu/Exit" to="." method="_on_exit_pressed"]

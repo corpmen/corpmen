@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dvpuhpx7vcf23"]
+
+[ext_resource type="FontFile" uid="uid://bxlicuo1st3xv" path="res://theme/LuckiestGuy-Regular.ttf" id="1_ag65a"]
+
+[resource]
+default_font = ExtResource("1_ag65a")
+Label/fonts/font = ExtResource("1_ag65a")

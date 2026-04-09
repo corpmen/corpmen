@@ -1,0 +1,446 @@
+[gd_scene format=3 uid="uid://bgf35hohh30l"]
+
+[ext_resource type="Script" uid="uid://cqrq4b26lryve" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://rxolbguvtu1" path="res://assets/items/bandages.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://ltp8ks5aup5y" path="res://assets/items/empty-item.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cjm3qewl578cb" path="res://assets/items/bandaid.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://tox4kyn4d2mu" path="res://assets/items/energy-drink.png" id="4_oa1go"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
+bg_color = Color(0.029690146, 0.06683214, 0.08958655, 1)
+
+[node name="player_menu" type="CanvasLayer" unique_id=1614868288]
+script = ExtResource("1_l6cm7")
+
+[node name="control" type="Control" parent="." unique_id=1308464018]
+z_index = -1
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="control" unique_id=2076808205]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 642.0
+color = Color(0.03137255, 0.06666667, 0.09019608, 1)
+
+[node name="tabs" type="TabContainer" parent="control" unique_id=1963823989]
+z_index = 5
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 27.0
+offset_right = 1148.0
+offset_bottom = 590.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhts7")
+current_tab = 0
+
+[node name="Status" type="Control" parent="control/tabs" unique_id=459806049]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="General" type="GridContainer" parent="control/tabs/Status" unique_id=642150114]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 38.0
+offset_right = 1119.0
+offset_bottom = 171.0
+columns = 4
+
+[node name="Name" type="Label" parent="control/tabs/Status/General" unique_id=1537472729]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Name"
+uppercase = true
+
+[node name="NameA" type="Label" parent="control/tabs/Status/General" unique_id=727257217]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Stephen"
+uppercase = true
+
+[node name="Class" type="Label" parent="control/tabs/Status/General" unique_id=1821927930]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Class"
+uppercase = true
+
+[node name="ClassA" type="Label" parent="control/tabs/Status/General" unique_id=1290474434]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Software Engineer"
+uppercase = true
+
+[node name="Hitpoints" type="Label" parent="control/tabs/Status/General" unique_id=1140015236]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Hitpoints"
+uppercase = true
+
+[node name="HitpointsA" type="Label" parent="control/tabs/Status/General" unique_id=346699821]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+uppercase = true
+
+[node name="Stamina" type="Label" parent="control/tabs/Status/General" unique_id=149114917]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Stamina"
+uppercase = true
+
+[node name="StaminaA" type="Label" parent="control/tabs/Status/General" unique_id=1885837381]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+uppercase = true
+
+[node name="Cash" type="Label" parent="control/tabs/Status/General" unique_id=389359521]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Cash"
+uppercase = true
+
+[node name="CashA" type="Label" parent="control/tabs/Status/General" unique_id=188983696]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+uppercase = true
+
+[node name="Level" type="Label" parent="control/tabs/Status/General" unique_id=1168353200]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Level"
+uppercase = true
+
+[node name="LevelA" type="Label" parent="control/tabs/Status/General" unique_id=237874470]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "1"
+uppercase = true
+
+[node name="Experience" type="Label" parent="control/tabs/Status/General" unique_id=813872993]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Experience"
+uppercase = true
+
+[node name="ExperienceA" type="Label" parent="control/tabs/Status/General" unique_id=1924127144]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+uppercase = true
+
+[node name="Attributes" type="GridContainer" parent="control/tabs/Status" unique_id=189083869]
+layout_mode = 1
+offset_left = 74.0
+offset_top = 220.0
+offset_right = 410.0
+offset_bottom = 536.0
+columns = 2
+
+[node name="Strength" type="Label" parent="control/tabs/Status/Attributes" unique_id=148055765]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Strength"
+
+[node name="StrengthA" type="Label" parent="control/tabs/Status/Attributes" unique_id=236368075]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Dexterity" type="Label" parent="control/tabs/Status/Attributes" unique_id=1727722737]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dexterity"
+
+[node name="DexterityA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1613857989]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Constitution" type="Label" parent="control/tabs/Status/Attributes" unique_id=205586456]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Constitution"
+
+[node name="ConstitutionA" type="Label" parent="control/tabs/Status/Attributes" unique_id=889968716]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Intelligence" type="Label" parent="control/tabs/Status/Attributes" unique_id=1306026770]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Intelligence"
+
+[node name="IntelligenceA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1277655488]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Wisdom" type="Label" parent="control/tabs/Status/Attributes" unique_id=1816762906]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Wisdom"
+
+[node name="WisdomA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1345584739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Charisma" type="Label" parent="control/tabs/Status/Attributes" unique_id=1971621044]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Charisma"
+
+[node name="CharismaA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1028931328]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Wellness" type="GridContainer" parent="control/tabs/Status" unique_id=1267556762]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 221.0
+offset_right = 642.0
+offset_bottom = 367.0
+columns = 2
+
+[node name="Karma" type="Label" parent="control/tabs/Status/Wellness" unique_id=89673823]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Karma"
+
+[node name="KarmaA" type="Label" parent="control/tabs/Status/Wellness" unique_id=395165610]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Satisfaction" type="Label" parent="control/tabs/Status/Wellness" unique_id=299971060]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Satisfaction"
+
+[node name="SatisfactionA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1167377660]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Stress" type="Label" parent="control/tabs/Status/Wellness" unique_id=1311460360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Stress"
+
+[node name="StressA" type="Label" parent="control/tabs/Status/Wellness" unique_id=858411197]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Integrity" type="Label" parent="control/tabs/Status/Wellness" unique_id=1337133534]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Integrity"
+
+[node name="IntegrityA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1776491710]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Popularity" type="Label" parent="control/tabs/Status/Wellness" unique_id=1482021597]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Popularity"
+
+[node name="PopularityA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1938685775]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 2
+
+[node name="Equipment" type="Control" parent="control/tabs" unique_id=951328474]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Slot" type="TileMapLayer" parent="control/tabs/Equipment" unique_id=842718323]
+
+[node name="Test" type="Label" parent="control/tabs/Equipment" unique_id=927841686]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Testing"
+
+[node name="Items" type="Control" parent="control/tabs" unique_id=725874950]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="GridContainer" type="GridContainer" parent="control/tabs/Items" unique_id=475975265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+
+[node name="Button" type="Button" parent="control/tabs/Items/GridContainer" unique_id=85360472]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_8ln24")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="control/tabs/Items/GridContainer" unique_id=684591068]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("3_rtw2f")
+expand_icon = true
+
+[node name="Button3" type="Button" parent="control/tabs/Items/GridContainer" unique_id=812404585]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("4_oa1go")
+expand_icon = true
+
+[node name="Button4" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1454609819]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button5" type="Button" parent="control/tabs/Items/GridContainer" unique_id=842269981]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button6" type="Button" parent="control/tabs/Items/GridContainer" unique_id=101495441]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button7" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1722082987]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button8" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1532043072]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button9" type="Button" parent="control/tabs/Items/GridContainer" unique_id=17800464]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button10" type="Button" parent="control/tabs/Items/GridContainer" unique_id=19842395]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button11" type="Button" parent="control/tabs/Items/GridContainer" unique_id=741383346]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button12" type="Button" parent="control/tabs/Items/GridContainer" unique_id=242076630]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button13" type="Button" parent="control/tabs/Items/GridContainer" unique_id=964791899]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button14" type="Button" parent="control/tabs/Items/GridContainer" unique_id=965871347]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button15" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1874668641]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Button16" type="Button" parent="control/tabs/Items/GridContainer" unique_id=516153504]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+
+[node name="Skills" type="Control" parent="control/tabs" unique_id=961741229]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="main" type="HBoxContainer" parent="control" unique_id=518136459]
+layout_mode = 0
+offset_left = 910.0
+offset_top = 591.0
+offset_right = 1120.0
+offset_bottom = 631.0
+alignment = 2
+
+[node name="Settings" type="Button" parent="control/main" unique_id=716594650]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Back" type="Button" parent="control/main" unique_id=132210344]
+layout_mode = 2
+text = "Back"
+
+[node name="Logo" type="Label" parent="control" unique_id=249013940]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 610.0
+offset_right = 95.0
+offset_bottom = 633.0
+text = "Corpmen v0.1"
