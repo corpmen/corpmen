@@ -16,5 +16,5 @@ func _ready() -> void:
 
 func create_player(new_name: String) -> void:
 	
-	playerData = PlayerState.generate_player(Constants.SWE, new_name)
-	#playerData = PlayerState.load_player("0")
+	#playerData = PlayerState.generate_player(Constants.SWE, new_name)
+	playerData = PlayerState.load_player("0")

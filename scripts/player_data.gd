@@ -19,7 +19,10 @@ extends Character
 
 # backpack
 
-var slots_max = Constants.DEFAULT_MAX_SLOTS
+@export var inventory: Inventory
+
+#var slots_max = Constants.DEFAULT_MAX_SLOTS
+
 
 # storage
 
@@ -62,7 +65,7 @@ func basic_attack(attack_name: String, monster: Monster) -> String:
 		if damage == 0:
 			return "missed"
 		else:
-			return "%s %s for %d damage" % [name, attack_name, damage]
+			return "%s: %s for %d damage" % [name, attack_name, damage]
 		
 	else:
 		return "Not enough stamina to perform action %d" % [stamina]
@@ -83,7 +86,7 @@ func weapon_attack(attack_name: String, monster: Monster) -> String:
 	if damage == 0:
 		return "missed"
 	else:
-		return "%s %s for %d damage" % [name, attack_name, damage]
+		return "%s: %s for %d damage" % [name, attack_name, damage]
 	
 	
 func special_attack() -> String:
@@ -113,3 +116,6 @@ func resurrect() -> void:
 	
 	PlayerState.update_player("0")
 	
+
+func init_inventory() -> void:
+	inventory = Inventory.new()

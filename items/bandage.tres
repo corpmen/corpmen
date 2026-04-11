@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dt27ii51ug4q7"]
+
+[ext_resource type="Script" uid="uid://dq56muu2hh5ai" path="res://scripts/item.gd" id="1_0y06x"]
+[ext_resource type="Texture2D" uid="uid://rxolbguvtu1" path="res://assets/items/bandages.png" id="2_eml74"]
+
+[resource]
+script = ExtResource("1_0y06x")
+name = "Bandage"
+description = "Used to heal 10 points of health."
+type = 2
+stackable = true
+max = 25
+hitpoints = 10
+texture = ExtResource("2_eml74")
+metadata/_custom_type_script = "uid://dq56muu2hh5ai"

@@ -54,7 +54,8 @@ static func generate_player(c: Dictionary, name: String) -> PlayerData:
 	
 	p.init_hitpoints()
 	p.init_stamina()
-	
+	p.init_inventory()	
+
 	var err = ResourceSaver.save(p, path)
 	
 	if err == OK:

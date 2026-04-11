@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cscxkkv3b023p"]
 
 [ext_resource type="Texture2D" uid="uid://qdu5h7itiyiu" path="res://assets/characters/manager.png" id="1_dn72j"]
-[ext_resource type="Script" uid="uid://dm86pjn863hxl" path="res://scenes/battle.gd" id="1_lpir7"]
+[ext_resource type="Script" uid="uid://dm86pjn863hxl" path="res://scripts/battle.gd" id="1_lpir7"]
 [ext_resource type="Texture2D" uid="uid://br3b5codhu6wj" path="res://assets/tilemaps/battle-bg.png" id="1_th188"]
 [ext_resource type="Texture2D" uid="uid://dgcet3lc2ngci" path="res://assets/characters/player-battle.png" id="3_p1qf1"]
 [ext_resource type="Theme" uid="uid://dvpuhpx7vcf23" path="res://theme/default_theme.tres" id="4_a12nh"]

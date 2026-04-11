@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://bgf35hohh30l"]
 
-[ext_resource type="Script" uid="uid://cqrq4b26lryve" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://cqrq4b26lryve" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://rxolbguvtu1" path="res://assets/items/bandages.png" id="2_8ln24"]
-[ext_resource type="Texture2D" uid="uid://ltp8ks5aup5y" path="res://assets/items/empty-item.png" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cjm3qewl578cb" path="res://assets/items/bandaid.png" id="3_rtw2f"]
-[ext_resource type="Texture2D" uid="uid://tox4kyn4d2mu" path="res://assets/items/energy-drink.png" id="4_oa1go"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.029690146, 0.06683214, 0.08958655, 1)
@@ -38,9 +36,10 @@ offset_top = 27.0
 offset_right = 1148.0
 offset_bottom = 590.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhts7")
-current_tab = 0
+current_tab = 2
 
 [node name="Status" type="Control" parent="control/tabs" unique_id=459806049]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -301,7 +300,6 @@ offset_bottom = 23.0
 text = "Testing"
 
 [node name="Items" type="Control" parent="control/tabs" unique_id=725874950]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -317,6 +315,39 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 8
 
+[node name="MenuButton" type="MenuButton" parent="control/tabs/Items/GridContainer" unique_id=1848665735]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("3_rtw2f")
+expand_icon = true
+item_count = 2
+popup/item_0/text = "Use"
+popup/item_0/id = 0
+popup/item_1/text = "Drop"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="control/tabs/Items/GridContainer/MenuButton" unique_id=1911900760]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = 16.0
+offset_right = -12.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton2" type="MenuButton" parent="control/tabs/Items/GridContainer" unique_id=325934102]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("2_8ln24")
+expand_icon = true
+
 [node name="Button" type="Button" parent="control/tabs/Items/GridContainer" unique_id=85360472]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
@@ -329,90 +360,6 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("3_rtw2f")
-expand_icon = true
-
-[node name="Button3" type="Button" parent="control/tabs/Items/GridContainer" unique_id=812404585]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("4_oa1go")
-expand_icon = true
-
-[node name="Button4" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1454609819]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button5" type="Button" parent="control/tabs/Items/GridContainer" unique_id=842269981]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button6" type="Button" parent="control/tabs/Items/GridContainer" unique_id=101495441]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button7" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1722082987]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button8" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1532043072]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button9" type="Button" parent="control/tabs/Items/GridContainer" unique_id=17800464]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button10" type="Button" parent="control/tabs/Items/GridContainer" unique_id=19842395]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button11" type="Button" parent="control/tabs/Items/GridContainer" unique_id=741383346]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button12" type="Button" parent="control/tabs/Items/GridContainer" unique_id=242076630]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button13" type="Button" parent="control/tabs/Items/GridContainer" unique_id=964791899]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button14" type="Button" parent="control/tabs/Items/GridContainer" unique_id=965871347]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button15" type="Button" parent="control/tabs/Items/GridContainer" unique_id=1874668641]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
-expand_icon = true
-
-[node name="Button16" type="Button" parent="control/tabs/Items/GridContainer" unique_id=516153504]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_ekxnf")
 expand_icon = true
 
 [node name="Skills" type="Control" parent="control/tabs" unique_id=961741229]

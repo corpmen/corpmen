@@ -117,7 +117,12 @@ func play_animation(direction):
 	
 func check_encounter() -> void:
 
-	if Game.rng.randf() < Constants.ENCOUNTER_CHANCE:
+	var roll = randf()
+	
+	if roll < Constants.LOOT_ENCOUNTER_CHANCE:
+		print("loot")
+		pass
+	elif roll < Constants.LOOT_ENCOUNTER_CHANCE + Constants.MONSTER_ENCOUNTER_CHANCE:
 	
 		if battle == null:
 			battle = Battle.instantiate()	

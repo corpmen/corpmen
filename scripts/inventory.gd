@@ -1,94 +1,129 @@
+# assumption is that the inventory is always compacted while adding items
+
 class_name Inventory
+
 
 extends Resource
 
+@export var slots: int = Constants.DEFAULT_MAX_SLOTS
+@export var items: Array[Item] = []
 
-var slots: int = Constants.DEFAULT_MAX_SLOTS
-var items: Array = []
 
-
-func load_item(name: String, quantity: int) -> Item:
+## fills from smallest index to largest skipping itself
+##   use index -1 if this item does not yet been added to the inventory
+##
+func merge_left(name: String, quantity: int, index: int) -> int:
 	
-	if quantity <= 0:
-		return null
+	var count = items.size()
+	var remaining = quantity
+	var merged = 0
+	
+	for i in range(count):
 		
-	var item = Constants.ITEMS.get(name)
-	
-	#todo: if doesn't exist
-	
-	var new_item = Item.new()
-	
-	new_item.name = name
-	new_item.description = item.description
-	new_item.type = item.type
-	
-	new_item.quantity = quantity
-	new_item.stackable = item.stackable
-	new_item.durability = item.durability
-	new_item.max = item.max
-	new_item.hitpoints = item.hitpoints
-	new_item.stamina = item.stamina
-	
-	return new_item
+		if i == index:
+			break
+		else:
+			
+			if items[i].name == name and items[i].stackable and items[i].quantity < items[i].max:
+				
+				var delta = items[i].max - items[i].quantity
+				
+				if delta < remaining:
+					
+					remaining = remaining - delta
+					
+					items[i].quantity = items[i].max
+					
+					merged += delta
+					
+				else:
+					
+					items[i].quantity += remaining
+					
+					merged += remaining
+					
+					return merged
+		
+	return merged
 
-	
-func add_item(name: String, quantity: int) -> int:
 
+func add(item: Resource) -> int:
+
+	if item == null:
+		return 0
+		
 	var count = items.size()
 	
 	if count == slots:
 		
-		var remaining = compact_new(name, quantity)
+		var remaining = merge_left(item.name, item.quantity, -1)
 		
 		return remaining
 	
 	elif count < slots:
 	
-		var item = load_item(name, quantity)
-		
-		if item == null:
-			return 0
-		
 		items.append(item)
 		
-		return quantity
+		#compact()
+		
+		return item.quantity
 		
 	# see if it exists and can be stacked	
 	else:
 		return 0
 
+
+func remove(index: int) -> void:
 	
+	if index >= 0 and index < slots:
+		pass #todo
+	else:
+		print("error: incorrect inventory index ", index)
 	
-func compact_new(name: String, quantity: int) -> int:
+
+## finds all stackable items and counts
+func get_stackables() -> Dictionary:
+
+# i need to know the overall total count
+# i also need to know the indexes
+
+	var stackables: Dictionary = {}
 	
-	var to_absorb = quantity
-	
-	var item = Constants.ITEMS.get(name)
-	
-	if !item.stackable:
-		return 0
-	
-	for i in items:
+	var count = items.size()
 		
-		if i.name == name:
+	for i in range(count):
+		
+		if items[i].stackable:
 			
-			if i.quantity < i.max:
+			var val = stackables.get(items[i].name, -1)
+
+			if val != -1:
+				stackables[items[i].name] += items[i].quantity
+			else:
+				stackables[items[i].name] = items[i].quantity
 				
-				var delta = i.max - i.quantity
-				
-				if delta >= to_absorb:
-					
-					i.quantity += to_absorb
-					
-					return true
-					 
-				else:
-					
-					i.quantity += delta
-					
-					to_absorb -= delta
-					
-	return to_absorb
-				
-				
+	return stackables
+
+
+func clean() -> void:
+	items = items.filter(func(item): return item.quantity > 0)
+			
+
+
+## compacts existing inventory
+func compact() -> int:
+
+	var count = items.size()
+		
+	for i in range(count):
+		
+		if items[i].stackable and i != 0:
+			
+			var merged = merge_left(items[i].name, items[i].quantity, i)
+
+			if merged != 0:
+				items[i].quantity -= merged
+
+	clean()
 	
+	return 0	

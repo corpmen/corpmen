@@ -16,7 +16,8 @@ const STEP_BASIC_PCT       	= 0.10
 const STEP_WEAPON_PCT       = 0.05
 const STEP_SPECIAL_PCT      = 0.03
 
-const ENCOUNTER_CHANCE: float	= 0.1
+const MONSTER_ENCOUNTER_CHANCE: float	= 0.1
+const LOOT_ENCOUNTER_CHANCE: float	= 0.02
 
 const DEFAULT_MAX_SLOTS: int	= 16
 
@@ -285,6 +286,14 @@ enum ITEM_TYPE {
 	EXPLOSIVE
 }
 
+enum RARITY {
+	COMMON,
+	UNCOMMON,
+	RARE,
+	EPIC,
+	LEGENDARY
+}
+
 const ITEMS = {
 	"mouse": {
 		"description": "a short-range weapon, can be flailed at an enemy",
@@ -329,9 +338,9 @@ const ITEMS = {
 		"description": "heals a large amount of health and stamina",
 		"type": ITEM_TYPE.MEDICAL,
 		"hitpoints": 25,
-		"stamina": 25,
+		"stamina": 5,
 		"stackable": true,
-		"max": 20
+		"max": 10
 	},
 }
 

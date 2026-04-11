@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://8wkmkqy6hkx1"]
+
+[ext_resource type="Script" uid="uid://dq56muu2hh5ai" path="res://scripts/item.gd" id="1_2i34o"]
+[ext_resource type="Texture2D" uid="uid://cjm3qewl578cb" path="res://assets/items/bandaid.png" id="2_j2ni5"]
+
+[resource]
+script = ExtResource("1_2i34o")
+name = "Bandaid"
+description = "Used to heal 5 points of health"
+type = 2
+stackable = true
+max = 25
+hitpoints = 5
+texture = ExtResource("2_j2ni5")
+metadata/_custom_type_script = "uid://dq56muu2hh5ai"

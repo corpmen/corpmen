@@ -53,7 +53,7 @@ func basic_attack() -> String:
 	if damage == 0:
 		return "missed"
 	else:
-		return "%s %s for %d damage" % [name, keys[i], damage]
+		return "%s: %s for %d damage" % [name, keys[i], damage]
 
 
 func special_attack() -> String:
@@ -74,7 +74,7 @@ func special_attack() -> String:
 	if damage == 0:
 		return "missed"
 	else:
-		return "%s %s for %d damage" % [name, special[i], damage]
+		return "%s: %s for %d damage" % [name, special[i], damage]
 
 
 func weapon_attack():

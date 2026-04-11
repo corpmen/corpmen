@@ -6,8 +6,6 @@ func _ready() -> void:
 
 func update_page_data() -> void:
 	
-	print("updating?")
-	print(Game.playerData.hitpoints)
 	$control/tabs/Status/General/NameA.text = Game.playerData.name
 	
 	$control/tabs/Status/General/ClassA.text = Constants.CharacterClassNames[
@@ -59,3 +57,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_menu"):
 		#queue_free()
 		update_page_data()
+
+
+#func _on_button_pressed() -> void:
+#	var pos = global_position + Vector2(0, size.y)
+	
+	
