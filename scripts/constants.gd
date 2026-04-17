@@ -19,7 +19,7 @@ const STEP_SPECIAL_PCT      = 0.03
 const MONSTER_ENCOUNTER_CHANCE: float	= 0.1
 const LOOT_ENCOUNTER_CHANCE: float	= 0.02
 
-const DEFAULT_MAX_SLOTS: int	= 16
+const DEFAULT_MAX_SLOTS: int	= 8
 
 const KEY_MIN: String		= "min"
 const KEY_MAX: String		= "max"
@@ -299,48 +299,66 @@ const ITEMS = {
 		"description": "a short-range weapon, can be flailed at an enemy",
 		"type": ITEM_TYPE.WEAPON,
 		"durability": 10,
+		"rarity": RARITY.COMMON,
+		"min.strength": 5,
 		"stackable": false,
+		"texture": "res://assets/items/mouse.png"
 	},
 	"keyboard": {
 		"description": "can be used as a bashing weapon for short range attacks",
 		"type": ITEM_TYPE.WEAPON,
 		"durability": 10,
+		"rarity": RARITY.COMMON,
+		"min.strength": 5,
 		"stackable": false,
+		"texture": "res://assets/items/keyboard.png"
 	},
 	"staple gun": {
 		"description": "can be used as a medium rang weapon for shooting staples",
 		"type": ITEM_TYPE.WEAPON,
 		"durability": 15,
+		"rarity": RARITY.UNCOMMON,
+		"min.level": 2,
+		"min.strength": 5,
 		"stackable": false,
+		"texture": "res://assets/items/staple_gun.png"
 	},
-	"staples": {
+	"staple": {
 		"description": "for use with staple gun",
 		"type": ITEM_TYPE.AMMUNITION,
 		"durability": 0,
+		"rarity": RARITY.COMMON,
 		"stackable": true,
-		"max": 250
+		"max": 250,
+		"texture": "res://assets/items/staple.png"
 	},
 	"bandaid": {
 		"description": "heal small amount of health",
 		"type": ITEM_TYPE.MEDICAL,
+		"rarity": RARITY.COMMON,
 		"hitpoints": 5,
 		"stackable": true,
-		"max": 25
+		"max": 25,
+		"texture": "res://assets/items/bandaid.png"
 	},
 	"bandage": {
 		"description": "heal medium amount of health",
 		"type": ITEM_TYPE.MEDICAL,
+		"rarity": RARITY.COMMON,
 		"hitpoints": 10,
 		"stackable": true,
-		"max": 25
+		"max": 25,
+		"texture": "res://assets/items/bandage.png"
 	},
 	"energy drink": {
 		"description": "heals a large amount of health and stamina",
 		"type": ITEM_TYPE.MEDICAL,
+		"rarity": RARITY.UNCOMMON,
 		"hitpoints": 25,
 		"stamina": 5,
 		"stackable": true,
-		"max": 10
+		"max": 5,
+		"texture": "res://assets/items/energy_drink.png"
 	},
 }
 
@@ -348,3 +366,9 @@ enum STATES {
 	ON,
 	OFF
 }
+
+const INVENTORY_ACTIONS = [
+	"Use",
+	"Equip",
+	"Drop"
+]

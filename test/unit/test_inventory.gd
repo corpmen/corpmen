@@ -4,6 +4,7 @@ var inventory: Inventory
 var bandage = load("res://items/bandage.tres")
 var bandaid = load("res://items/bandaid.tres")
 var staple = load("res://items/staple.tres")
+var stapler = load("res://items/stapler.tres")
 
 func before_all():
 
@@ -36,8 +37,6 @@ func test_add_more_inventory():
 	s1.quantity = 3
 	var res = inventory.add(s1)
 	assert_eq(3, res)
-
-	
 	
 	s2.quantity = 10
 	res = inventory.add(s2)
@@ -69,9 +68,7 @@ func test_compact_complex():
 	assert_eq(inventory.items[0].quantity, 250)
 	assert_eq(inventory.items[2].quantity, 15)
 	
-	for item in inventory.items:
-		print(item.name, item.quantity)
-		
+
 
 func test_compact_two_shifts():
 	
@@ -85,9 +82,7 @@ func test_compact_two_shifts():
 	
 	assert_eq(inventory.items.size(), 3)
 	assert_eq(inventory.items[2].quantity, 215)
-	
-	for item in inventory.items:
-		print(item.name, item.quantity)
+
 
 
 func test_compact_four_shifts():
@@ -115,5 +110,61 @@ func test_compact_four_shifts():
 	assert_eq(inventory.items[3].quantity, 250)
 	assert_eq(inventory.items[4].quantity, 55)
 	
-	for item in inventory.items:
-		print(item.name, item.quantity)
+
+func test_add_full():
+	
+	for i in range(11):
+		
+		var s = stapler.duplicate()
+	
+		s.quantity = 1
+		var res = inventory.add(s)
+		assert_eq(res, 1)
+		
+	assert_eq(inventory.items.size(), 16)
+	
+	var s = stapler.duplicate()
+	
+	s.quantity = 1
+	var res = inventory.add(s)
+	assert_eq(res, 0)
+
+	assert_eq(inventory.items.size(), 16)
+
+
+func test_compact_overflow():
+	
+	var s = staple.duplicate()
+	
+	s.quantity = 250
+	var res = inventory.add(s)
+	assert_eq(res, 195)
+
+	assert_eq(inventory.items.size(), 16)
+	assert_eq(inventory.items[4].quantity, 250)
+
+
+func test_remove_negative_index():
+	
+	var res = inventory.remove(-1)
+	
+	assert_eq(res, false)
+
+	assert_eq(inventory.items.size(), 16)
+
+
+func test_remove_out_of_bounds_index():
+	
+	var res = inventory.remove(20)
+	
+	assert_eq(res, false)
+
+	assert_eq(inventory.items.size(), 16)
+
+
+func test_remove_index():
+	
+	var res = inventory.remove(3)
+	assert_eq(res, true)
+
+	assert_eq(inventory.items.size(), 15)

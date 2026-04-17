@@ -35,7 +35,8 @@ static func update_player(save: String) -> void:
 	else:
 		print("File update failed, player state null")
 	
-	
+
+
 static func generate_player(c: Dictionary, name: String) -> PlayerData:
 	
 	var p: PlayerData = PlayerData.new()
@@ -56,6 +57,19 @@ static func generate_player(c: Dictionary, name: String) -> PlayerData:
 	p.init_stamina()
 	p.init_inventory()	
 
+	var b = load("res://items/bandage.tres").duplicate()
+	var m = load("res://items/mouse.tres").duplicate()
+	var k = load("res://items/keyboard.tres").duplicate()
+	var e = load("res://items/energy_drink.tres").duplicate()
+	
+	b.quantity = 5
+	e.quantity = 2
+
+	p.inventory.add(b)
+	p.inventory.add(m)
+	p.inventory.add(k)
+	p.inventory.add(e)
+	
 	var err = ResourceSaver.save(p, path)
 	
 	if err == OK:

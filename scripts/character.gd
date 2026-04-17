@@ -5,9 +5,11 @@ extends Resource
 # main
 @export var name: String = ""
 @export var hitpoints_max: int = 1
+@export var hitpoints: int
 @export var stamina_max: int = 1
 @export var stamina: int
-@export var hitpoints: int
+@export var specialpoints_max: int = 1
+@export var specialpoints: int
 @export var xp: int = 0
 @export var cash: int = 100
 @export var hitpoints_regeneration_rate: int = 0

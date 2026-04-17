@@ -27,15 +27,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vh42"]
-bg_color = Color(0.003921569, 0.03137255, 0.039215688, 0.93333334)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a12nh"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.8784314)
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03edq"]
 
@@ -44,17 +37,17 @@ bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.8784314)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ni85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpir7"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 1)
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vceff"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k1nj"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 1)
+bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekamt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ngm"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(1, 0, 0, 0.5568628)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djc8l"]
 
@@ -231,15 +224,6 @@ offset_right = 515.0
 offset_bottom = 394.0
 scale = Vector2(3, 3)
 texture = ExtResource("3_p1qf1")
-
-[node name="MenuBack" type="Panel" parent="Control" unique_id=1561362305]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 426.0
-offset_right = 1111.0
-offset_bottom = 611.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6vh42")
 
 [node name="ActionMenu" type="VBoxContainer" parent="Control" unique_id=1588163399]
 layout_mode = 0

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://c2kq3dq7i85b"]
 
 [ext_resource type="Script" uid="uid://dq56muu2hh5ai" path="res://scripts/item.gd" id="1_gr8lj"]
-[ext_resource type="Texture2D" uid="uid://bwbpf2mutner5" path="res://assets/weapons/keyboard.png" id="2_kq4bu"]
+[ext_resource type="Texture2D" uid="uid://bwbpf2mutner5" path="res://assets/items/keyboard.png" id="2_kq4bu"]
 
 [resource]
 script = ExtResource("1_gr8lj")
-name = "Keyboard"
+name = "keyboard"
 description = "Short range bashing weapon."
 durability = 10
 texture = ExtResource("2_kq4bu")

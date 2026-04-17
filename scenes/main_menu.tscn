@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://bgf35hohh30l"]
 
 [ext_resource type="Script" uid="uid://cqrq4b26lryve" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://rxolbguvtu1" path="res://assets/items/bandages.png" id="2_8ln24"]
-[ext_resource type="Texture2D" uid="uid://cjm3qewl578cb" path="res://assets/items/bandaid.png" id="3_rtw2f"]
+[ext_resource type="Script" uid="uid://cntc3lkgg07gh" path="res://scripts/inventory_tab.gd" id="2_bqqt6"]
+[ext_resource type="Script" uid="uid://dwh8tfwvmjdyu" path="res://scripts/inventory_slot.gd" id="3_bqqt6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.029690146, 0.06683214, 0.08958655, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.10980392, 0.23921569, 0.48235294, 0.7137255)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [node name="player_menu" type="CanvasLayer" unique_id=1614868288]
 script = ExtResource("1_l6cm7")
@@ -28,6 +35,7 @@ offset_bottom = 642.0
 color = Color(0.03137255, 0.06666667, 0.09019608, 1)
 
 [node name="tabs" type="TabContainer" parent="control" unique_id=1963823989]
+unique_name_in_owner = true
 z_index = 5
 custom_minimum_size = Vector2(600, 500)
 layout_mode = 0
@@ -286,86 +294,73 @@ theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 2
 
+[node name="Inventory_Tab" type="Control" parent="control/tabs" unique_id=1816328973]
+visible = false
+layout_mode = 2
+script = ExtResource("2_bqqt6")
+metadata/_custom_type_script = "uid://cntc3lkgg07gh"
+metadata/_tab_index = 1
+
+[node name="Inventory" type="Control" parent="control/tabs" unique_id=725874950]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="GridContainer" type="GridContainer" parent="control/tabs/Inventory" unique_id=475975265]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 24.0
+offset_right = -46.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="control/tabs/Inventory" unique_id=1703079699]
+layout_mode = 1
+offset_left = 53.0
+offset_top = 423.0
+offset_right = 1093.0
+offset_bottom = 532.0
+
+[node name="Label" type="Label" parent="control/tabs/Inventory/HBoxContainer" unique_id=1358448656]
+layout_mode = 2
+text = "equipped weapons:"
+
+[node name="MenuButton" type="MenuButton" parent="control/tabs/Inventory/HBoxContainer" unique_id=1853589999]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "Weapon 1"
+expand_icon = true
+
+[node name="MenuButton2" type="MenuButton" parent="control/tabs/Inventory/HBoxContainer" unique_id=1407568411]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "weapon 2"
+expand_icon = true
+
 [node name="Equipment" type="Control" parent="control/tabs" unique_id=951328474]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 3
 
 [node name="Slot" type="TileMapLayer" parent="control/tabs/Equipment" unique_id=842718323]
 
 [node name="Test" type="Label" parent="control/tabs/Equipment" unique_id=927841686]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 106.0
+offset_top = 54.0
+offset_right = 166.0
+offset_bottom = 77.0
 text = "Testing"
-
-[node name="Items" type="Control" parent="control/tabs" unique_id=725874950]
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="GridContainer" type="GridContainer" parent="control/tabs/Items" unique_id=475975265]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = 31.0
-offset_right = -565.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 8
-
-[node name="MenuButton" type="MenuButton" parent="control/tabs/Items/GridContainer" unique_id=1848665735]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-icon = ExtResource("3_rtw2f")
-expand_icon = true
-item_count = 2
-popup/item_0/text = "Use"
-popup/item_0/id = 0
-popup/item_1/text = "Drop"
-popup/item_1/id = 1
-
-[node name="Label" type="Label" parent="control/tabs/Items/GridContainer/MenuButton" unique_id=1911900760]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -38.0
-offset_top = 16.0
-offset_right = -12.0
-offset_bottom = 48.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 28
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MenuButton2" type="MenuButton" parent="control/tabs/Items/GridContainer" unique_id=325934102]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-icon = ExtResource("2_8ln24")
-expand_icon = true
-
-[node name="Button" type="Button" parent="control/tabs/Items/GridContainer" unique_id=85360472]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("2_8ln24")
-expand_icon = true
-
-[node name="Button2" type="Button" parent="control/tabs/Items/GridContainer" unique_id=684591068]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = ExtResource("3_rtw2f")
-expand_icon = true
 
 [node name="Skills" type="Control" parent="control/tabs" unique_id=961741229]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="main" type="HBoxContainer" parent="control" unique_id=518136459]
 layout_mode = 0
@@ -391,3 +386,37 @@ offset_top = 610.0
 offset_right = 95.0
 offset_bottom = 633.0
 text = "Corpmen v0.1"
+
+[node name="Feedback" type="Label" parent="control" unique_id=1288645430]
+z_index = 7
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.5
+offset_right = 0.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DropConfirm" type="ConfirmationDialog" parent="control" unique_id=1935292396]
+title = "Confirm Drop"
+ok_button_text = "Yes"
+dialog_text = "Are you sure that you want to drop this item?"
+cancel_button_text = "No"
+
+[node name="InventorySlot" type="MenuButton" parent="." unique_id=1804393752]
+script = ExtResource("3_bqqt6")
+metadata/_custom_type_script = "uid://dwh8tfwvmjdyu"
+
+[connection signal="tab_changed" from="control/tabs" to="." method="_on_tabs_tab_changed"]

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://cqmijgquhyj0q"]
 
 [ext_resource type="Script" uid="uid://dq56muu2hh5ai" path="res://scripts/item.gd" id="1_uwt11"]
-[ext_resource type="Texture2D" uid="uid://tox4kyn4d2mu" path="res://assets/items/energy-drink.png" id="2_hw1ty"]
+[ext_resource type="Texture2D" uid="uid://tox4kyn4d2mu" path="res://assets/items/energy_drink.png" id="2_hw1ty"]
 
 [resource]
 script = ExtResource("1_uwt11")
-name = "Energy Drink"
+name = "energy drink"
 description = "Used to heal 25 points of health and stamina."
 type = 2
 stackable = true
-max = 10
+max = 5
 hitpoints = 25
 stamina = 25
 rarity = 1

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_2i34o")
-name = "Bandaid"
+name = "bandaid"
 description = "Used to heal 5 points of health"
 type = 2
 stackable = true

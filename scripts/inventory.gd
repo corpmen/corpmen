@@ -5,7 +5,7 @@ class_name Inventory
 
 extends Resource
 
-@export var slots: int = Constants.DEFAULT_MAX_SLOTS
+@export var slot_count: int = Constants.DEFAULT_MAX_SLOTS
 @export var items: Array[Item] = []
 
 
@@ -54,13 +54,13 @@ func add(item: Resource) -> int:
 		
 	var count = items.size()
 	
-	if count == slots:
+	if count == slot_count:
 		
 		var remaining = merge_left(item.name, item.quantity, -1)
 		
 		return remaining
 	
-	elif count < slots:
+	elif count < slot_count:
 	
 		items.append(item)
 		
@@ -73,14 +73,38 @@ func add(item: Resource) -> int:
 		return 0
 
 
-func remove(index: int) -> void:
+func drop(index: int, quantity: int) -> bool:
 	
-	if index >= 0 and index < slots:
-		pass #todo
+	# todo: drop quantity
+	if quantity == -1:
+		pass
+		
+	if index >= 0 and index < slot_count:
+		items.remove_at(index)
+		return true
 	else:
 		print("error: incorrect inventory index ", index)
+		return false
 	
 
+func swap(from: int, to: int) -> bool:
+	
+	var count = items.size()
+	
+	if from < 0 or from >= count:
+		return false
+	
+	if to < 0 or to >= count:
+		return false
+	
+	var temp = items[to]
+	
+	items[to] = items[from]
+	items[from] = temp
+	
+	return true
+	
+	
 ## finds all stackable items and counts
 func get_stackables() -> Dictionary:
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c62if5axjb7ak"]
+
+[ext_resource type="Texture2D" uid="uid://ltp8ks5aup5y" path="res://assets/items/empty-item.png" id="1_dxvxp"]
+[ext_resource type="Script" uid="uid://dwh8tfwvmjdyu" path="res://scripts/inventory_slot.gd" id="2_bxqf6"]
+
+[node name="MenuButton" type="MenuButton" unique_id=2116417750]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_dxvxp")
+expand_icon = true
+item_count = 3
+popup/item_0/text = "Use"
+popup/item_0/id = 0
+popup/item_1/text = "Equip"
+popup/item_1/id = 1
+popup/item_2/text = "Drop"
+popup/item_2/id = 2
+script = ExtResource("2_bxqf6")
+
+[node name="quantity" type="Label" parent="." unique_id=1630728123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "label"
+horizontal_alignment = 2
+vertical_alignment = 2

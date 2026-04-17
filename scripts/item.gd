@@ -5,8 +5,8 @@ extends Resource
 @export var name: String
 @export var description: String
 @export var type: Constants.ITEM_TYPE
-@export var quantity: int
-@export var stackable: bool
+@export var quantity: int = 1
+@export var stackable: bool = false
 @export var max: int
 @export var hitpoints: int
 @export var stamina: int
