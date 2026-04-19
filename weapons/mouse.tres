@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://oekn24bnjkd2"]
+
+[ext_resource type="Script" uid="uid://bjdtwfrg4ak2d" path="res://scripts/weapon.gd" id="1_m2f77"]
+[ext_resource type="Texture2D" uid="uid://btfywwpwxauaa" path="res://assets/weapons/mouse.png" id="2_noqnl"]
+
+[resource]
+script = ExtResource("1_m2f77")
+name = "mouse"
+description = "Short range weapon can be flailed at enemy."
+min_level = 1
+min_strength = 5
+min_damage = 3
+max_damage = 6
+durability = 10
+texture = ExtResource("2_noqnl")
+metadata/_custom_type_script = "uid://dq56muu2hh5ai"

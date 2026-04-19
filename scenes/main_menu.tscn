@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bgf35hohh30l"]
 
 [ext_resource type="Script" uid="uid://cqrq4b26lryve" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://cntc3lkgg07gh" path="res://scripts/inventory_tab.gd" id="2_bqqt6"]
-[ext_resource type="Script" uid="uid://dwh8tfwvmjdyu" path="res://scripts/inventory_slot.gd" id="3_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://ltp8ks5aup5y" path="res://assets/items/empty-item.png" id="2_ekxnf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.029690146, 0.06683214, 0.08958655, 1)
@@ -44,7 +43,7 @@ offset_top = 27.0
 offset_right = 1148.0
 offset_bottom = 590.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhts7")
-current_tab = 2
+current_tab = 1
 
 [node name="Status" type="Control" parent="control/tabs" unique_id=459806049]
 visible = false
@@ -294,18 +293,11 @@ theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 2
 
-[node name="Inventory_Tab" type="Control" parent="control/tabs" unique_id=1816328973]
-visible = false
+[node name="Items" type="Control" parent="control/tabs" unique_id=725874950]
 layout_mode = 2
-script = ExtResource("2_bqqt6")
-metadata/_custom_type_script = "uid://cntc3lkgg07gh"
 metadata/_tab_index = 1
 
-[node name="Inventory" type="Control" parent="control/tabs" unique_id=725874950]
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="GridContainer" type="GridContainer" parent="control/tabs/Inventory" unique_id=475975265]
+[node name="GridContainer" type="GridContainer" parent="control/tabs/Items" unique_id=475975265]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -319,48 +311,82 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="control/tabs/Inventory" unique_id=1703079699]
-layout_mode = 1
-offset_left = 53.0
-offset_top = 423.0
-offset_right = 1093.0
-offset_bottom = 532.0
-
-[node name="Label" type="Label" parent="control/tabs/Inventory/HBoxContainer" unique_id=1358448656]
-layout_mode = 2
-text = "equipped weapons:"
-
-[node name="MenuButton" type="MenuButton" parent="control/tabs/Inventory/HBoxContainer" unique_id=1853589999]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-text = "Weapon 1"
-expand_icon = true
-
-[node name="MenuButton2" type="MenuButton" parent="control/tabs/Inventory/HBoxContainer" unique_id=1407568411]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-text = "weapon 2"
-expand_icon = true
-
-[node name="Equipment" type="Control" parent="control/tabs" unique_id=951328474]
+[node name="Weapons" type="Control" parent="control/tabs" unique_id=951328474]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
-[node name="Slot" type="TileMapLayer" parent="control/tabs/Equipment" unique_id=842718323]
+[node name="Left" type="GridContainer" parent="control/tabs/Weapons" unique_id=1006114704]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 163.0
+offset_top = -105.0
+offset_right = 423.0
+offset_bottom = 23.0
+grow_vertical = 2
+columns = 2
 
-[node name="Test" type="Label" parent="control/tabs/Equipment" unique_id=927841686]
-layout_mode = 0
-offset_left = 106.0
-offset_top = 54.0
-offset_right = 166.0
-offset_bottom = 77.0
-text = "Testing"
+[node name="Weapon1" type="MenuButton" parent="control/tabs/Weapons/Left" unique_id=1904970477]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+item_count = 1
+popup/item_0/text = "Unequip"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="control/tabs/Weapons/Left/Weapon1" unique_id=1713574696]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_right = 36.5
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Weapon 1"
+
+[node name="Weapon2" type="MenuButton" parent="control/tabs/Weapons/Left" unique_id=1042844954]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+icon = ExtResource("2_ekxnf")
+expand_icon = true
+item_count = 1
+popup/item_0/text = "Unequip"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="control/tabs/Weapons/Left/Weapon2" unique_id=123325321]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_right = 37.5
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Weapon 2"
+
+[node name="Right" type="GridContainer" parent="control/tabs/Weapons" unique_id=2065754298]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = -107.0
+offset_right = -134.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 4
 
 [node name="Skills" type="Control" parent="control/tabs" unique_id=961741229]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 3
 
 [node name="main" type="HBoxContainer" parent="control" unique_id=518136459]
 layout_mode = 0
@@ -414,9 +440,5 @@ title = "Confirm Drop"
 ok_button_text = "Yes"
 dialog_text = "Are you sure that you want to drop this item?"
 cancel_button_text = "No"
-
-[node name="InventorySlot" type="MenuButton" parent="." unique_id=1804393752]
-script = ExtResource("3_bqqt6")
-metadata/_custom_type_script = "uid://dwh8tfwvmjdyu"
 
 [connection signal="tab_changed" from="control/tabs" to="." method="_on_tabs_tab_changed"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://jrqan6uoki7q"]
+
+[ext_resource type="Script" uid="uid://bjdtwfrg4ak2d" path="res://scripts/weapon.gd" id="1_l1xud"]
+[ext_resource type="Texture2D" uid="uid://d17ln0e0do7tm" path="res://assets/weapons/stapler.png" id="2_k40kd"]
+
+[resource]
+script = ExtResource("1_l1xud")
+name = "staple gun"
+description = "Medium range weapon shoots staples."
+type = 1
+min_level = 2
+min_strength = 5
+min_damage = 2
+max_damage = 7
+durability = 15
+clip = 20
+texture = ExtResource("2_k40kd")
+metadata/_custom_type_script = "uid://dq56muu2hh5ai"

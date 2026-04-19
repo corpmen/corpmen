@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const slot = preload("res://scenes/inventory_slot.tscn")
+const equipment_slot = preload("res://scenes/equipment_slot.tscn")
 const empty = preload("res://assets/items/empty-item.png")
 
 var drop_index = -1
@@ -9,7 +10,6 @@ var drop_index = -1
 
 func _ready() -> void:
 	
-	#var p = %slot0.get_popup()
 	$control/Feedback.visible = false
 	
 	$control/DropConfirm.confirmed.connect(_on_drop_confirmed)
@@ -18,13 +18,23 @@ func _ready() -> void:
 	update_status()
 	
 	create_inventory()
+	create_equipment()
+	
+	update_inventory()
+	update_equipment()
+	
+	update_weapon_slots()
+	
+	var weapon1 = $control/tabs/Weapons/Left/Weapon1
+	var weapon2 = $control/tabs/Weapons/Left/Weapon2
 
-
+	weapon1.get_popup().id_pressed.connect(_on_unequip.bind(weapon1))
+	weapon2.get_popup().id_pressed.connect(_on_unequip.bind(weapon2))
+	
+	
 func create_inventory() -> void:
 	
-	var count = Game.playerData.items.size()
-	
-	var grid = $control/tabs/Inventory/GridContainer
+	var grid = $control/tabs/Items/GridContainer
 		
 	for child in grid.get_children():
 		child.queue_free()
@@ -92,7 +102,7 @@ func update_status() -> void:
 func update_inventory() -> void:
 	
 	var count = Game.playerData.inventory.items.size()
-	var grid = $control/tabs/Inventory/GridContainer
+	var grid = $control/tabs/Items/GridContainer
 	
 	#todo if the count is greater than size
 	
@@ -106,27 +116,13 @@ func update_inventory() -> void:
 			slots[i].icon = load(
 				Constants.ITEMS[Game.playerData.inventory.items[i].name].texture)
 			
+			slots[i].tooltip_text = Constants.ITEMS[\
+			  Game.playerData.inventory.items[i].name].description
+			
 			if Game.playerData.inventory.items[i].stackable:
 				slots[i].set_quantity(Game.playerData.inventory.items[i].quantity)
 			else:
 				slots[i].set_quantity(1)
-			
-			var popup = slots[i].get_popup()
-			
-			if Game.playerData.inventory.items[i].type == Constants.ITEM_TYPE.WEAPON:
-			
-				#todo: disable if equipped already
-
-				popup.set_item_disabled(0, true) # don't hardcode
-				#popup.set_item_disabled(1, true) # don't hardcode
-					
-			elif Game.playerData.inventory.items[i].type == Constants.ITEM_TYPE.MEDICAL or \
-				  Game.playerData.inventory.items[i].type != Constants.ITEM_TYPE.EDIBLE:
-					
-				popup.set_item_disabled(1, true)
-					
-				
-			
 				
 		else:
 			
@@ -135,6 +131,73 @@ func update_inventory() -> void:
 			slots[i].set_quantity(1)
 			
 
+func create_equipment() -> void:
+	
+	var grid = $control/tabs/Weapons/Right
+	
+	for child in grid.get_children():
+		child.queue_free()
+		
+	for i in range(Game.playerData.equipment.weapon_slot_count):
+		
+		var s = equipment_slot.instantiate()
+		
+		grid.add_child(s)
+		
+		s.name = "slot" + str(i)
+		
+		s.on_weapon_equipped.connect(_on_weapon_equipped)
+		s.drop_requested.connect(_on_drop_notification)
+		
+
+func update_equipment() -> void:
+	
+	var grid = $control/tabs/Weapons/Right
+	
+	var children = grid.get_children()
+	
+	var weapons = Game.playerData.equipment.weapons
+	
+	var count = weapons.size()
+	
+	for i in range(children.size()):
+
+		if i < count:
+				
+			children[i].icon = weapons[i].texture
+			children[i].tooltip_text = weapons[i].description
+			
+		else:
+			
+			children[i].icon = empty
+			children[i].tooltip_text = ""
+		
+		
+
+func update_weapon_slots() -> void:
+	
+	var weapon1 = $control/tabs/Weapons/Left/Weapon1
+	var weapon2 = $control/tabs/Weapons/Left/Weapon2
+	
+	var equipment = Game.playerData.equipment
+	
+	print("weapon1: ", equipment.weapon1)
+	print("weapon2: ", equipment.weapon2)
+	
+	if equipment.weapon1 != null:
+		weapon1.icon = equipment.weapon1.texture
+		weapon1.tooltip_text = equipment.weapon1.description
+	else:
+		weapon1.icon = empty
+		weapon1.tooltip_text = ""
+		
+	if equipment.weapon2 != null:
+		weapon2.icon = equipment.weapon2.texture
+		weapon2.tooltip_text = equipment.weapon2.description
+	else:
+		weapon2.icon = empty
+		weapon2.tooltip_text = ""
+		
 
 func show_feedback(feedback: String) -> void:
 	
@@ -154,22 +217,33 @@ func show_feedback(feedback: String) -> void:
 
 func show_dialog(name: String, index: int) -> void:
 	$control/DropConfirm.popup_centered()
-	
+
+
 func _on_inventory_notification(msg: String) -> void:
 	
 	show_feedback(msg)
 
 
+func _on_weapon_equipped(index: int) -> void:
+	
+	print("weapon equipped: ", index)
+	update_weapon_slots()
+	
+	update_equipment()
+	
+	
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("toggle_menu"):
 		#queue_free()
 		
 		var sel = tabs.current_tab
-		print("tab: ", sel)
+		#print("tab: ", sel)
 		if sel == 0:
 			update_status()
 		if sel == 2:
+			update_inventory()
+		if sel == 1:
 			update_inventory()
 
 
@@ -180,7 +254,6 @@ func _on_drop_confirmed() -> void:
 		Game.playerData.inventory.drop(drop_index, \
 		  Game.playerData.inventory.items[drop_index].quantity)
 		
-		#var s = $control/tabs/Inventory/GridContainer.get_node("slot" + str(drop_index))
 		update_inventory()
 		
 	
@@ -194,18 +267,18 @@ func _on_drop_canceled() -> void:
 
 func _on_tabs_tab_changed(tab: int) -> void:
 	
-	print("tabs: ", tab)
-	
 	match tab:
 		0:
 			update_status()
 		1:
 			update_inventory()
+		2:
+			update_equipment()
+			update_weapon_slots()
 
 
 func _on_popup_menu_id_pressed(id: int) -> void:
-	
-	print("bass: ", id)	
+	pass
 
 
 func _on_drop_notification(name: String, index: int) -> void:
@@ -213,3 +286,15 @@ func _on_drop_notification(name: String, index: int) -> void:
 	drop_index = index
 	
 	show_dialog(name, index)
+
+
+func _on_unequip(id: int, btn: MenuButton) -> void:
+	
+	if btn.name == "Weapon1":
+		Game.playerData.equipment.unset_weapon(0)
+	elif btn.name == "Weapon2":
+		Game.playerData.equipment.unset_weapon(1)
+		
+	update_equipment()
+	update_weapon_slots()
+	

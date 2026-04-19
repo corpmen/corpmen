@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ammunition" format=3 uid="uid://yvnx2xu8k3bj"]
+
+[ext_resource type="Script" uid="uid://coulrxh26cdv4" path="res://scripts/ammunition.gd" id="1_eqguh"]
+[ext_resource type="Texture2D" uid="uid://cgt7wtsjgr8yj" path="res://assets/ammunition/staple.png" id="2_6m3p2"]
+
+[resource]
+script = ExtResource("1_eqguh")
+name = "staple"
+description = "Ammunition for staple gun"
+max = 250
+texture = ExtResource("2_6m3p2")
+metadata/_custom_type_script = "uid://dq56muu2hh5ai"

@@ -55,20 +55,22 @@ static func generate_player(c: Dictionary, name: String) -> PlayerData:
 	
 	p.init_hitpoints()
 	p.init_stamina()
-	p.init_inventory()	
+	p.init_inventory()
+	p.init_equipment()
 
 	var b = load("res://items/bandage.tres").duplicate()
-	var m = load("res://items/mouse.tres").duplicate()
-	var k = load("res://items/keyboard.tres").duplicate()
+	var m = load("res://weapons/mouse.tres").duplicate()
+	var k = load("res://weapons/keyboard.tres").duplicate()
 	var e = load("res://items/energy_drink.tres").duplicate()
 	
 	b.quantity = 5
 	e.quantity = 2
 
 	p.inventory.add(b)
-	p.inventory.add(m)
-	p.inventory.add(k)
 	p.inventory.add(e)
+	
+	p.equipment.add_weapon(m)
+	p.equipment.add_weapon(k)
 	
 	var err = ResourceSaver.save(p, path)
 	

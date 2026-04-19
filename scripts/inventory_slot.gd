@@ -76,12 +76,7 @@ func use_item(index: int) -> void:
 			
 			give_action_feedback.emit("Stamina already full %s, item not used" \
 				% [player.stamina_to_string()])
-				
 
-
-func equip_item(index: int) -> void:
-	pass
-	
 
 func drop_item(index: int) -> void:
 	
@@ -94,10 +89,6 @@ func drop_item(index: int) -> void:
 	var item = player.inventory.items[index]
 	
 	drop_requested.emit(item.name, index)
-	
-	#player.inventory.drop(index, item.quantity)
-
-	# todo: need to confirm with player
 
 
 func _on_menu_item_pressed(id: int) -> void:
@@ -113,11 +104,7 @@ func _on_menu_item_pressed(id: int) -> void:
 		"Use":
 
 			use_item(index)
-					
-		"Equip":
-			print("equipping")
+
 		"Drop":
 			
 			drop_item(index)
-			
-			#if Game.playerData.inventory.drop()

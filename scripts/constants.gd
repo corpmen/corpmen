@@ -202,12 +202,6 @@ const ATTACKS = {
 	#"headbutt": {"min": 5, "max": 10, "stamina": 20},
 }
 
-const WEAPONS = {
-	"mouse": {"min": 3, "max": 7, "stamina": 8, "min.strength": 5},
-	"keyboard": {"min": 5, "max": 10, "stamina": 12, "min.strength": 10},
-	"staple gun": {"min": 7, "max": 12, "stamina": 3, "min.strength": 5},
-}
-
 const SPECIAL = {
 	"sarcasm": {"min": 7, "max": 12, "stamina": 3, "stress": 8, "satisfaction": 10},
 	"useless meeting": {"min": 3, "max": 5, "stamina": 3, "stress": 5, "satisfaction": 20 },
@@ -286,6 +280,12 @@ enum ITEM_TYPE {
 	EXPLOSIVE
 }
 
+enum WEAPON_TYPE {
+	SHORT,
+	MEDIUM,
+	LONG,
+}
+
 enum RARITY {
 	COMMON,
 	UNCOMMON,
@@ -295,43 +295,6 @@ enum RARITY {
 }
 
 const ITEMS = {
-	"mouse": {
-		"description": "a short-range weapon, can be flailed at an enemy",
-		"type": ITEM_TYPE.WEAPON,
-		"durability": 10,
-		"rarity": RARITY.COMMON,
-		"min.strength": 5,
-		"stackable": false,
-		"texture": "res://assets/items/mouse.png"
-	},
-	"keyboard": {
-		"description": "can be used as a bashing weapon for short range attacks",
-		"type": ITEM_TYPE.WEAPON,
-		"durability": 10,
-		"rarity": RARITY.COMMON,
-		"min.strength": 5,
-		"stackable": false,
-		"texture": "res://assets/items/keyboard.png"
-	},
-	"staple gun": {
-		"description": "can be used as a medium rang weapon for shooting staples",
-		"type": ITEM_TYPE.WEAPON,
-		"durability": 15,
-		"rarity": RARITY.UNCOMMON,
-		"min.level": 2,
-		"min.strength": 5,
-		"stackable": false,
-		"texture": "res://assets/items/staple_gun.png"
-	},
-	"staple": {
-		"description": "for use with staple gun",
-		"type": ITEM_TYPE.AMMUNITION,
-		"durability": 0,
-		"rarity": RARITY.COMMON,
-		"stackable": true,
-		"max": 250,
-		"texture": "res://assets/items/staple.png"
-	},
 	"bandaid": {
 		"description": "heal small amount of health",
 		"type": ITEM_TYPE.MEDICAL,
@@ -360,6 +323,58 @@ const ITEMS = {
 		"max": 5,
 		"texture": "res://assets/items/energy_drink.png"
 	},
+}
+
+const WEAPONS = {
+	"mouse": {
+		"description": "a short-range weapon, can be flailed at an enemy",
+		"type": ITEM_TYPE.WEAPON,
+		"durability": 10,
+		"rarity": RARITY.COMMON,
+		"min_level": 1,
+		"min_strength": 5,
+		"min_damage": 3,
+		"max_damage": 6,
+		"stackable": false,
+		"texture": "res://assets/weapons/mouse.png"
+	},
+	"keyboard": {
+		"description": "can be used as a bashing weapon for short range attacks",
+		"type": ITEM_TYPE.WEAPON,
+		"durability": 10,
+		"rarity": RARITY.COMMON,
+		"min_level": 1,
+		"min_strength": 5,
+		"min_damage": 5,
+		"max_damage": 10,
+		"stackable": false,
+		"texture": "res://assets/weapons/keyboard.png"
+	},
+	"staple gun": {
+		"description": "can be used as a medium rang weapon for shooting staples",
+		"type": ITEM_TYPE.WEAPON,
+		"durability": 15,
+		"rarity": RARITY.UNCOMMON,
+		"min_level": 2,
+		"min_strength": 5,
+		"min_damage": 7,
+		"max_damage": 12,
+		"clip": 20,
+		"stackable": false,
+		"texture": "res://assets/weapons/staple_gun.png"
+	},
+
+}
+
+const AMMUNITION = {
+	"staple": {
+		"for": "staple gun",
+		"description": "for use with staple gun",
+		"rarity": RARITY.COMMON,
+		"stackable": true,
+		"max": 250,
+		"texture": "res://assets/ammunition/staple.png"
+	},	
 }
 
 enum STATES {

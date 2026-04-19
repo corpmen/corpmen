@@ -21,6 +21,10 @@ extends Character
 
 @export var inventory: Inventory
 
+# equipment
+
+@export var equipment: Equipment
+
 #var slots_max = Constants.DEFAULT_MAX_SLOTS
 
 
@@ -119,3 +123,7 @@ func resurrect() -> void:
 
 func init_inventory() -> void:
 	inventory = Inventory.new()
+	
+
+func init_equipment() -> void:
+	equipment = Equipment.new()
