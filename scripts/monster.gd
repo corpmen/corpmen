@@ -51,7 +51,7 @@ func basic_attack() -> String:
 	Game.playerData.apply_damage(damage)
 
 	if damage == 0:
-		return "missed"
+		return "%s: %s missed" % [name, keys[i]]
 	else:
 		return "%s: %s for %d damage" % [name, keys[i], damage]
 
@@ -72,7 +72,7 @@ func special_attack() -> String:
 	Game.playerData.apply_damage(damage)
 	
 	if damage == 0:
-		return "missed"
+		return "%s: %s missed" % [name, special[i]]
 	else:
 		return "%s: %s for %d damage" % [name, special[i], damage]
 

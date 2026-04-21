@@ -33,7 +33,16 @@ func get_index_from_name(name: String) -> int:
 	return int(id)
 
 
+func recover_health() -> void:
+	pass
+
+
 func use_item(index: int) -> void:
+	
+	var is_health			= false
+	var is_stamina			= false
+	var recovered_health 	= 0
+	var recovered_stamina 	= 0
 	
 	var player 	= Game.playerData
 	
@@ -45,6 +54,8 @@ func use_item(index: int) -> void:
 		
 	if item.hitpoints > 0:
 		
+		is_health = true
+		
 		if player.hitpoints < player.hitpoints_max:
 			
 			var delta = player.hitpoints_max - player.hitpoints
@@ -52,15 +63,13 @@ func use_item(index: int) -> void:
 		
 			player.hitpoints += recovered
 			
-			give_action_feedback.emit("Recovered %d hitpoints: %s" % [\
-			  recovered, player.hitpoints_to_string()])
-		
-		else:
+			recovered_health = recovered
 			
-			give_action_feedback.emit("Health already full (%s), item not used" \
-				% [player.hitpoints_to_string()])
+			player.inventory.items[index].quantity -= 1
 			
 	if item.stamina > 0:
+		
+		is_stamina = true
 		
 		if player.stamina < player.stamina_max:
 			
@@ -68,13 +77,47 @@ func use_item(index: int) -> void:
 			var recovered = min(item.stamina, delta)
 			
 			player.stamina += recovered
+		
+			recovered_stamina = recovered
+				
+			player.inventory.items[index].quantity -= 1
 			
-			give_action_feedback.emit("Recovered %d stamina, (%s)" % [\
-			  recovered, player.stamina_to_string()])
+
+	if is_stamina and is_health:
+		
+		if recovered_health > 0 or recovered_stamina > 0:
 			
+			give_action_feedback.emit("Recovered %d hitpoints (%s) and %d stamina (%s)" % [\
+				recovered_health, player.hitpoints_to_string(), recovered_stamina,
+				player.stamina_to_string()])
+				
 		else:
 			
-			give_action_feedback.emit("Stamina already full %s, item not used" \
+			give_action_feedback.emit("Hitpoints (%s) and stamina (%s) are already full, item not used" \
+				% [player.hitpoints_to_string(), player.stamina_to_string()])
+			
+	elif is_health:
+		
+		if recovered_health > 0:
+		
+			give_action_feedback.emit("Recovered %d hitpoints (%s)" % [\
+				recovered_health, player.hitpoints_to_string()])
+		
+		else:
+			
+			give_action_feedback.emit("Hitpoints already full (%s), item not used" \
+				% [player.hitpoints_to_string()])
+	
+	elif is_stamina:
+	
+		if recovered_stamina > 0:
+			
+			give_action_feedback.emit("Recovered %d stamina (%s)" % [\
+				recovered_stamina, player.stamina_to_string()])
+				
+		else:
+			
+			give_action_feedback.emit("Stamina already full (%s), item not used" \
 				% [player.stamina_to_string()])
 
 

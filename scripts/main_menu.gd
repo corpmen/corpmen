@@ -124,11 +124,15 @@ func update_inventory() -> void:
 			else:
 				slots[i].set_quantity(1)
 				
+			slots[i].disabled = false
+				
 		else:
 			
 			slots[i].icon = empty
 			
 			slots[i].set_quantity(1)
+			
+			slots[i].disabled = true
 			
 
 func create_equipment() -> void:
@@ -138,7 +142,8 @@ func create_equipment() -> void:
 	for child in grid.get_children():
 		child.queue_free()
 		
-	for i in range(Game.playerData.equipment.weapon_slot_count):
+	for i in range(Game.playerData.equipment.weapon_slot_count +\
+		Game.playerData.equipment.ammo_slot_count):
 		
 		var s = equipment_slot.instantiate()
 		
@@ -157,8 +162,10 @@ func update_equipment() -> void:
 	var children = grid.get_children()
 	
 	var weapons = Game.playerData.equipment.weapons
+	#var ammo	= Game.playerData.equipment.ammo
 	
 	var count = weapons.size()
+	#var count2 = ammo.size()
 	
 	for i in range(children.size()):
 
@@ -166,14 +173,15 @@ func update_equipment() -> void:
 				
 			children[i].icon = weapons[i].texture
 			children[i].tooltip_text = weapons[i].description
+			children[i].disabled = false
 			
 		else:
 			
 			children[i].icon = empty
 			children[i].tooltip_text = ""
+			children[i].disabled = true
 		
 		
-
 func update_weapon_slots() -> void:
 	
 	var weapon1 = $control/tabs/Weapons/Left/Weapon1
@@ -181,22 +189,23 @@ func update_weapon_slots() -> void:
 	
 	var equipment = Game.playerData.equipment
 	
-	print("weapon1: ", equipment.weapon1)
-	print("weapon2: ", equipment.weapon2)
-	
 	if equipment.weapon1 != null:
 		weapon1.icon = equipment.weapon1.texture
 		weapon1.tooltip_text = equipment.weapon1.description
+		weapon1.disabled = false
 	else:
 		weapon1.icon = empty
 		weapon1.tooltip_text = ""
+		weapon1.disabled = true
 		
 	if equipment.weapon2 != null:
 		weapon2.icon = equipment.weapon2.texture
 		weapon2.tooltip_text = equipment.weapon2.description
+		weapon2.disabled = false
 	else:
 		weapon2.icon = empty
 		weapon2.tooltip_text = ""
+		weapon2.disabled = true
 		
 
 func show_feedback(feedback: String) -> void:
@@ -222,11 +231,12 @@ func show_dialog(name: String, index: int) -> void:
 func _on_inventory_notification(msg: String) -> void:
 	
 	show_feedback(msg)
+	
+	update_inventory()
 
 
 func _on_weapon_equipped(index: int) -> void:
 	
-	print("weapon equipped: ", index)
 	update_weapon_slots()
 	
 	update_equipment()

@@ -17,45 +17,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=451480619]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -42.0
-offset_right = 80.0
-offset_bottom = 42.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1274630453]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 579.0
+offset_right = 1150.0
+offset_bottom = 643.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1274630453]
-layout_mode = 2
-
-[node name="Slap" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=833589337]
+[node name="Slap" type="Button" parent="Control/HBoxContainer" unique_id=833589337]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("2_ktxt7")
 expand_icon = true
 
-[node name="Punch" type="Button" parent="Control/VBoxContainer/HBoxContainer" unique_id=139921749]
+[node name="Punch" type="Button" parent="Control/HBoxContainer" unique_id=139921749]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("3_5pxjm")
 expand_icon = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1755606442]
-layout_mode = 2
-text = "Melee"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1405399789]
-layout_mode = 2
-
-[node name="Weapon1" type="Button" parent="Control/VBoxContainer/HBoxContainer2" unique_id=166961421]
+[node name="Weapon1" type="Button" parent="Control/HBoxContainer" unique_id=166961421]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -64,18 +47,14 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Weapon2" type="Button" parent="Control/VBoxContainer/HBoxContainer2" unique_id=1739215666]
+[node name="Weapon2" type="Button" parent="Control/HBoxContainer" unique_id=1739215666]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("5_5pxjm")
 expand_icon = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=669812553]
-layout_mode = 2
-text = "Weapons"
-
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Slap" to="." method="_on_slap_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Punch" to="." method="_on_punch_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Weapon1" to="." method="_on_weapon_1_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Slap" to="." method="_on_slap_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Punch" to="." method="_on_punch_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Weapon2" to="." method="_on_weapon_2_pressed"]

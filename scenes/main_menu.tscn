@@ -369,6 +369,7 @@ grow_horizontal = 2
 text = "Weapon 2"
 
 [node name="Right" type="GridContainer" parent="control/tabs/Weapons" unique_id=2065754298]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -381,6 +382,7 @@ offset_right = -134.0
 offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/v_separation = 15
 columns = 4
 
 [node name="Skills" type="Control" parent="control/tabs" unique_id=961741229]

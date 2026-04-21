@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dm86pjn863hxl" path="res://scripts/battle.gd" id="1_lpir7"]
 [ext_resource type="Texture2D" uid="uid://br3b5codhu6wj" path="res://assets/tilemaps/battle-bg.png" id="1_th188"]
 [ext_resource type="Texture2D" uid="uid://dgcet3lc2ngci" path="res://assets/characters/player-battle.png" id="3_p1qf1"]
-[ext_resource type="Theme" uid="uid://dvpuhpx7vcf23" path="res://theme/default_theme.tres" id="4_a12nh"]
+[ext_resource type="Texture2D" uid="uid://ltp8ks5aup5y" path="res://assets/items/empty-item.png" id="5_lpir7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th188"]
 bg_color = Color(0.09803922, 0.85490197, 0.21960784, 1)
@@ -27,47 +27,35 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a12nh"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03edq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22uqi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ni85"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpir7"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vceff"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k1nj"]
-bg_color = Color(0.09803922, 0.21568628, 0.32941177, 0.5568628)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekamt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66ngm"]
-bg_color = Color(1, 0, 0, 0.5568628)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djc8l"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pi3"]
 bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.8156863)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahae"]
-bg_color = Color(0, 0, 0, 0.78039217)
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahae"]
+bg_color = Color(0, 0, 0, 0.42352942)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpir7"]
+bg_color = Color(0.010683848, 0.16554895, 0.23018968, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vh42"]
+bg_color = Color(0.011764706, 0.16470589, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03edq"]
+bg_color = Color(0.011764706, 0.16470589, 0.23137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22uqi"]
+bg_color = Color(0.011764706, 0.16470589, 0.23137255, 1)
 
 [node name="battle" type="CanvasLayer" unique_id=2084312181]
 script = ExtResource("1_lpir7")
@@ -225,58 +213,6 @@ offset_bottom = 394.0
 scale = Vector2(3, 3)
 texture = ExtResource("3_p1qf1")
 
-[node name="ActionMenu" type="VBoxContainer" parent="Control" unique_id=1588163399]
-layout_mode = 0
-offset_left = 938.0
-offset_top = 437.0
-offset_right = 1075.0
-offset_bottom = 575.0
-mouse_filter = 2
-theme = ExtResource("4_a12nh")
-
-[node name="ActionLabel" type="Label" parent="Control/ActionMenu" unique_id=2075513991]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Actions"
-
-[node name="Attack" type="Button" parent="Control/ActionMenu" unique_id=1690237020]
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_03edq")
-text = "Attack"
-
-[node name="Item" type="Button" parent="Control/ActionMenu" unique_id=1097787837]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_22uqi")
-text = "Item"
-
-[node name="Special" type="Button" parent="Control/ActionMenu" unique_id=885396422]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_a12nh")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_6ni85")
-text = "Special"
-
-[node name="Flee" type="Button" parent="Control/ActionMenu" unique_id=757513158]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_lpir7")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_vceff")
-text = "Flee
-"
-
-[node name="Skip" type="Button" parent="Control/ActionMenu" unique_id=1213059250]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_4k1nj")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ekamt")
-text = "Skip Turn"
-
-[node name="Exit" type="Button" parent="Control/ActionMenu" unique_id=965828658]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_66ngm")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_djc8l")
-text = "Exit"
-
 [node name="Status" type="Label" parent="Control" unique_id=1307296687]
 layout_mode = 0
 offset_left = 467.0
@@ -301,6 +237,88 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[connection signal="pressed" from="Control/ActionMenu/Attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="Control/ActionMenu/Skip" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="Control/ActionMenu/Exit" to="." method="_on_exit_pressed"]
+[node name="Actions" type="GridContainer" parent="Control" unique_id=45740734]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -163.0
+offset_right = -24.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 5
+
+[node name="Melee1" type="Button" parent="Control/Actions" unique_id=1592868189]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lpir7")
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Melee2" type="Button" parent="Control/Actions" unique_id=1119551344]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6vh42")
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Weapon1" type="Button" parent="Control/Actions" unique_id=1962346207]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_03edq")
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Weapon2" type="Button" parent="Control/Actions" unique_id=1050150631]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_22uqi")
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Special1" type="Button" parent="Control/Actions" unique_id=1816437567]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Special2" type="Button" parent="Control/Actions" unique_id=1213494578]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Special3" type="Button" parent="Control/Actions" unique_id=138892834]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Skip" type="Button" parent="Control/Actions" unique_id=282563600]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Flee" type="Button" parent="Control/Actions" unique_id=567569223]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[node name="Exit" type="Button" parent="Control/Actions" unique_id=849432527]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("5_lpir7")
+expand_icon = true
+
+[connection signal="pressed" from="Control/Actions/Melee1" to="." method="_on_melee_1_pressed"]
+[connection signal="pressed" from="Control/Actions/Melee2" to="." method="_on_melee_2_pressed"]
+[connection signal="pressed" from="Control/Actions/Weapon1" to="." method="_on_weapon_1_pressed"]
+[connection signal="pressed" from="Control/Actions/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="Control/Actions/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Control/Actions/Exit" to="." method="_on_exit_pressed"]

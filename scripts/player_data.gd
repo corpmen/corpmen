@@ -80,7 +80,7 @@ func weapon_attack(attack_name: String, monster: Monster) -> String:
 	var obj = Constants.WEAPONS[attack_name]
 	var damage = Constants.MIN_DAMAGE
 	
-	damage = randi_range(obj.min, obj.max)
+	damage = randi_range(obj.min_damage, obj.max_damage)
 	
 	damage -= attribute_bonus(damage, monster.constitution,
 		Constants.ATTACK_TYPES.WEAPONS)
