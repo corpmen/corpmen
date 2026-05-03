@@ -320,5 +320,8 @@ expand_icon = true
 [connection signal="pressed" from="Control/Actions/Melee2" to="." method="_on_melee_2_pressed"]
 [connection signal="pressed" from="Control/Actions/Weapon1" to="." method="_on_weapon_1_pressed"]
 [connection signal="pressed" from="Control/Actions/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="Control/Actions/Special1" to="." method="_on_special_1_pressed"]
+[connection signal="pressed" from="Control/Actions/Special2" to="." method="_on_special_2_pressed"]
+[connection signal="pressed" from="Control/Actions/Special3" to="." method="_on_special_3_pressed"]
 [connection signal="pressed" from="Control/Actions/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="Control/Actions/Exit" to="." method="_on_exit_pressed"]

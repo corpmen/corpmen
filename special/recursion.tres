@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialAttack" format=3 uid="uid://b4ojx6bxb26h4"]
+
+[ext_resource type="Texture2D" uid="uid://cd1d1q3wu2cc3" path="res://assets/special/recursion.png" id="1_m81lo"]
+[ext_resource type="Script" uid="uid://djqnrf8f5wqc4" path="res://scripts/special_attack.gd" id="2_wullr"]
+[ext_resource type="Resource" uid="uid://cbggfr2mbau1u" path="res://skills/cs101.tres" id="3_kmabc"]
+
+[resource]
+script = ExtResource("2_wullr")
+name = "Recursion"
+description = "Recursive algorithm which optimizes code."
+skill = ExtResource("3_kmabc")
+texture = ExtResource("1_m81lo")
+min_damage = 5
+max_damage = 10
+technical_pct = 100
+metadata/_custom_type_script = "uid://djqnrf8f5wqc4"

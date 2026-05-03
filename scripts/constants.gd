@@ -29,22 +29,22 @@ const SAVE_PATH: String		= "user://save_%s.tres"
 # character classes
 
 const SWE = {
-	"strength": {"min": 15, "max": 30},
-	"dexterity": {"min": 15, "max": 30},
-	"constitution": {"min": 15, "max": 30},
-	"intelligence": {"min": 5, "max": 25},
-	"wisdom": {"min": 1, "max": 25},
-	"charisma": {"min": 5, "max": 30},
+	"strength": {"min": 15, "max": 30, "up": 3},
+	"dexterity": {"min": 15, "max": 30, "up": 2},
+	"constitution": {"min": 15, "max": 30, "up": 3},
+	"intelligence": {"min": 5, "max": 25, "up": 1},
+	"wisdom": {"min": 1, "max": 25, "up": 1},
+	"charisma": {"min": 5, "max": 30, "up": 2},
 	"name": "Software Engineer"
 }
 
 const SENIOR_SWE = {
-	"strength": {"min": 1, "max": 100},
-	"dexterity": {"min": 1, "max": 100},
-	"constitution": {"min": 1, "max": 100},
-	"intelligence": {"min": 1, "max": 80},
-	"wisdom": {"min": 1, "max": 60},
-	"charisma": {"min": 1, "max": 100},
+	"strength": {"min": 1, "max": 100, "up": 3},
+	"dexterity": {"min": 1, "max": 100, "up": 3},
+	"constitution": {"min": 1, "max": 100, "up": 3},
+	"intelligence": {"min": 1, "max": 80, "up": 3},
+	"wisdom": {"min": 1, "max": 60, "up": 3},
+	"charisma": {"min": 1, "max": 100, "up": 3},
 	"name": "Senior Software Engineer"
 }
 
@@ -69,12 +69,12 @@ const PRINCIPAL_SWE = {
 }
 
 const SDET = {
-	"strength": {"min": 1, "max": 20},
-	"dexterity": {"min": 1, "max": 25},
-	"constitution": {"min": 1, "max": 30},
-	"intelligence": {"min": 1, "max": 25},
-	"wisdom": {"min": 1, "max": 25},
-	"charisma": {"min": 1, "max": 25},
+	"strength": {"min": 1, "max": 20, "up": 1},
+	"dexterity": {"min": 1, "max": 25, "up": 2},
+	"constitution": {"min": 1, "max": 30, "up": 3},
+	"intelligence": {"min": 1, "max": 25, "up": 2},
+	"wisdom": {"min": 1, "max": 25, "up": 3},
+	"charisma": {"min": 1, "max": 25, "up": 1},
 	"name": "Software Development Engineer in Test"
 }
 
@@ -109,12 +109,12 @@ const PRINCIPAL_SDET = {
 }
 
 const AIE = {
-	"strength": {"min": 1, "max": 15},
-	"dexterity": {"min": 1, "max": 20},
-	"constitution": {"min": 1, "max": 20},
-	"intelligence": {"min": 1, "max": 30},
-	"wisdom": {"min": 1, "max": 30},
-	"charisma": {"min": 1, "max": 20},
+	"strength": {"min": 1, "max": 15, "up": 1},
+	"dexterity": {"min": 1, "max": 20, "up": 1},
+	"constitution": {"min": 1, "max": 20, "up": 2},
+	"intelligence": {"min": 1, "max": 30, "up": 3},
+	"wisdom": {"min": 1, "max": 30, "up": 3},
+	"charisma": {"min": 1, "max": 20, "up": 1},
 	"name": "AI Engineer"
 }
 
@@ -185,6 +185,18 @@ const CharacterClassNames = {
 	CharacterClasses.PRINCIPAL_AIE: "Principal AI Engineer"
 }
 
+const CharacterClassData = {
+	CharacterClasses.SWE: SWE,
+}
+
+enum Characters {
+	DEVELOPER,
+	TESTER,
+	AI,
+	MANAGER	
+}
+
+
 # attacks
 
 enum ATTACK_TYPES {
@@ -200,6 +212,12 @@ const ATTACKS = {
 	"punch": {"min": 3, "max": 6, "stamina": 9},
 	"kick": {"min": 4, "max": 6, "stamina": 12},
 	#"headbutt": {"min": 5, "max": 10, "stamina": 20},
+}
+
+enum ALIGNMENT {
+	GOOD,
+	EVIL,
+	NEUTRAL,
 }
 
 const SPECIAL = {
@@ -228,6 +246,14 @@ const SKILLS = {
 		"refactoring": {},
 		"": {},
 	}
+}
+
+enum MONSTER_CLASS {
+	BUSINESS,
+	TECHNICAL,
+	PROJECT,
+	MANAGEMENT,
+	WORK,
 }
 
 const MONSTERS = {

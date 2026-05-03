@@ -33,10 +33,6 @@ func get_index_from_name(name: String) -> int:
 	return int(id)
 
 
-func recover_health() -> void:
-	pass
-
-
 func use_item(index: int) -> void:
 	
 	var is_health			= false

@@ -5,12 +5,13 @@ extends Resource
 # main
 @export var name: String = ""
 @export var hitpoints_max: int = 1
-@export var hitpoints: int
+@export var hitpoints: int = 1
 @export var stamina_max: int = 1
-@export var stamina: int
+@export var stamina: int = 1
 @export var specialpoints_max: int = 1
-@export var specialpoints: int
+@export var specialpoints: int = 1
 @export var xp: int = 0
+@export var level: int = 1
 @export var cash: int = 100
 @export var hitpoints_regeneration_rate: int = 0
 @export var stamina_regeneration_rate: int = 0
@@ -35,9 +36,29 @@ extends Resource
 
 @export var weapons: Dictionary = {}
 
+
+# backpack
+
+@export var inventory: Inventory = Inventory.new()
+
+# equipment
+
+@export var equipment: Equipment = Equipment.new()
+
+# abilities
+
+@export var abilities: Abilities = Abilities.new()
+
 # equipped armor
 
 @export var armor: Dictionary = {}
+
+
+func init():
+	
+	init_hitpoints()
+	init_stamina()
+
 
 
 func init_hitpoints() -> int:
@@ -58,6 +79,18 @@ func init_stamina() -> int:
 	stamina_regeneration_rate = Constants.BASE_REGENERATION_RATE + int(constitution / 60.0)
 	
 	return stamina
+
+
+func init_inventory() -> void:
+	inventory = Inventory.new()
+	
+
+func init_equipment() -> void:
+	equipment = Equipment.new()
+
+
+func init_abilities() -> void:
+	abilities = Abilities.new()
 	
 	
 func apply_damage(damage: int) -> int:

@@ -6,7 +6,6 @@ extends Character
 
 @export var player_class: int = Constants.CharacterClasses.SWE
 
-
 # wellness
 @export var karma: int = 0
 @export var satisfaction: int = 50
@@ -16,23 +15,14 @@ extends Character
 
 @export var resurrections: int = 0
 
-
-# backpack
-
-@export var inventory: Inventory
-
-# equipment
-
-@export var equipment: Equipment
-
 #var slots_max = Constants.DEFAULT_MAX_SLOTS
-
 
 # storage
 
 func test_items() -> void:
 	pass
-	
+
+
 func get_level() -> int:
 	
 	var level = 1
@@ -44,8 +34,52 @@ func get_level() -> int:
 	
 	
 func get_xp_for_level(level: int) -> int:
+	
+	if level > Constants.MAX_LEVEL:
+		level = Constants.MAX_LEVEL
+
 	return int(100 * pow(level, Constants.FIBONACCI_MULTIPLIER))
 	
+
+func xp_as_string() -> String:
+	
+	var needed: int = get_xp_for_level(get_level() + 1)
+	
+	return "%d/%d" % [xp, needed]
+
+
+func is_level_up() -> bool:
+	
+	var actual_level = get_level()
+	
+	if level != actual_level:
+		return true
+	else:
+		return false
+	
+
+func level_up() -> String:
+	
+	var summary: String = ""
+	
+	level += 1
+	
+	summary = "strength:\t\t%d +%d\ndexterity:\t\t%d +%d\nconstitution:\t%d +%d\nintelligence:\t%d +%d\nwisdom:\t\t\t%d +%d\ncharisma:\t\t%d +%d\n" % [strength, Constants.CharacterClassData[player_class].strength.up,\
+		dexterity, Constants.CharacterClassData[player_class].dexterity.up,\
+		constitution, Constants.CharacterClassData[player_class].constitution.up,\
+		intelligence, Constants.CharacterClassData[player_class].intelligence.up,\
+		wisdom, Constants.CharacterClassData[player_class].wisdom.up,\
+		charisma, Constants.CharacterClassData[player_class].charisma.up]
+		
+	strength += Constants.CharacterClassData[player_class].strength.up
+	dexterity += Constants.CharacterClassData[player_class].dexterity.up
+	constitution += Constants.CharacterClassData[player_class].constitution.up
+	intelligence += Constants.CharacterClassData[player_class].intelligence.up
+	wisdom += Constants.CharacterClassData[player_class].wisdom.up
+	charisma += Constants.CharacterClassData[player_class].charisma.up
+	
+	return summary
+
 
 func basic_attack(attack_name: String, monster: Monster) -> String:
 	
@@ -67,7 +101,7 @@ func basic_attack(attack_name: String, monster: Monster) -> String:
 		monster.apply_damage(damage)
 		
 		if damage == 0:
-			return "missed"
+			return "%s: %s missed" % [name, attack_name]
 		else:
 			return "%s: %s for %d damage" % [name, attack_name, damage]
 		
@@ -88,13 +122,32 @@ func weapon_attack(attack_name: String, monster: Monster) -> String:
 	monster.apply_damage(damage)
 	
 	if damage == 0:
-		return "missed"
+		return "%s: %s missed" % [name, attack_name]
 	else:
 		return "%s: %s for %d damage" % [name, attack_name, damage]
 	
 	
-func special_attack() -> String:
-	return ""
+func special_attack(attack: SpecialAttack, monster: Monster) -> String:
+	
+	var damage = Game.rng.randi_range(attack.min_damage, attack.max_damage)
+	
+	if monster.monster_class == monster.TECHNICAL:
+		damage = int(damage * attack.technical_pct/100)
+	elif monster.monster_class == monster.PROJECT:
+		damage = int(damage * attack.project_pct/100)
+	elif monster.monster_class == monster.TASK:
+		damage = int(damage * attack.task_pct/100)
+	elif monster.monster_class == monster.BUSINESS:
+		damage = int(damage * attack.business_pct/100)
+	elif monster.monster_class == monster.MANAGEMENT:
+		damage = int(damage * attack.management_pct/100)
+	elif monster.monster_class == monster.WORK:
+		damage = int(damage * attack.work_pct/100)
+	
+	if damage == 0:
+		return "%s: %s missed" % [name, attack.name]
+	else:
+		return "%s: %s for %d damage" % [name, attack.name, damage]
 
 
 func update_xp(gained: int) -> void:
@@ -119,11 +172,3 @@ func resurrect() -> void:
 	resurrections += 1
 	
 	PlayerState.update_player("0")
-	
-
-func init_inventory() -> void:
-	inventory = Inventory.new()
-	
-
-func init_equipment() -> void:
-	equipment = Equipment.new()

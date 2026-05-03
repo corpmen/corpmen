@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpecialAttack" format=3 uid="uid://qo4wtyxhwojs"]
+
+[ext_resource type="Script" uid="uid://djqnrf8f5wqc4" path="res://scripts/special_attack.gd" id="1_d7eej"]
+
+[resource]
+script = ExtResource("1_d7eej")
+name = "Impossible Deadline"
+description = "Unrealistic and unobtainable results, bound to fail, but on a tight deadline."
+alignment = 1
+min_damage = 10
+max_damage = 18
+swe_pct = 100
+sdet_pct = 100
+ai_pct = 100
+metadata/_custom_type_script = "uid://djqnrf8f5wqc4"

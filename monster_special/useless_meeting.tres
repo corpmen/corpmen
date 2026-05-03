@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpecialAttack" format=3 uid="uid://obtgcqp75agl"]
+
+[ext_resource type="Script" uid="uid://djqnrf8f5wqc4" path="res://scripts/special_attack.gd" id="1_r8ep1"]
+
+[resource]
+script = ExtResource("1_r8ep1")
+name = "Useless Meeting"
+description = "The meeting everyone wishes never existed."
+alignment = 1
+min_damage = 7
+max_damage = 12
+swe_pct = 100
+sdet_pct = 100
+ai_pct = 100
+metadata/_custom_type_script = "uid://djqnrf8f5wqc4"

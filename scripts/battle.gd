@@ -4,8 +4,11 @@ signal battle_finished()
 
 #const AttackMenu = preload("res://scenes/attack_menu.tscn")
 
-var slap = preload("res://assets/attacks/slap.png")
-var punch = preload("res://assets/attacks/punch.png")
+const slap = preload("res://assets/attacks/slap.png")
+const punch = preload("res://assets/attacks/punch.png")
+
+const bm = preload("res://monsters/bad_manager.tres")
+
 
 #var attack_menu		= null
 var monster 		= null
@@ -15,7 +18,9 @@ var completed       = false
 func _ready() -> void:
 	
 	# randomize monsters based on map location
-	monster = Monster.new("bad manager")
+	#monster = Monster.new("bad manager")
+	
+	monster = bm
 	
 	#attack_menu = AttackMenu.instantiate()
 		
@@ -45,21 +50,38 @@ func init_quick_menu() -> void:
 	var melee2 = $Control/Actions/Melee2
 	var weapon1 = $Control/Actions/Weapon1
 	var weapon2 = $Control/Actions/Weapon2
-	#var special1 = $Control/Actions/Special1
-	#var special2 = $Control/Actions/Special2
-	#var special3 = $Control/Actions/Special3
+	var special1 = $Control/Actions/Special1
+	var special2 = $Control/Actions/Special2
+	var special3 = $Control/Actions/Special3
 	#var flee = $Control/Actions/Flee
 	#var skip = $Control/Actions/Skip
 	#var exit = $Control/Actions/Exit
 	
 	melee1.icon = slap
+	melee1.tooltip_text = "Slap to the face, embarrassing and vulgar!"
 	melee2.icon = punch
+	melee2.tooltip_text = "Punch to the face, ball that fist up!"
 	
 	if Game.playerData.equipment.weapon1 != null:
 		weapon1.icon = Game.playerData.equipment.weapon1.texture
+		weapon1.tooltip_text = Game.playerData.equipment.weapon1.description
 	
 	if Game.playerData.equipment.weapon2 != null:
 		weapon2.icon = Game.playerData.equipment.weapon2.texture
+		weapon2.tooltip_text = Game.playerData.equipment.weapon2.description
+		
+	if Game.playerData.abilities.special1 != null:
+		special1.icon = Game.playerData.abilities.special1.texture
+		special1.tooltip_text = Game.playerData.abilities.special1.description
+		
+	if Game.playerData.abilities.special2 != null:
+		special2.icon = Game.playerData.abilities.special2.texture
+		special2.tooltip_text = Game.playerData.abilities.special2.description
+		
+	if Game.playerData.abilities.special3 != null:
+		special3.icon = Game.playerData.abilities.special3.texture
+		special3.tooltip_text = Game.playerData.abilities.special3.description
+			
 		
 
 func _on_attack_pressed() -> void:
@@ -241,6 +263,18 @@ func player_weapon_attack(attack_type: String) -> void:
 		toggle_attacker()
 	
 
+func player_special_attack(attack: SpecialAttack) -> void:
+	
+	var res = Game.playerData.special_attack(attack, monster)
+	$Control/ActionDetail.text = res
+	update_health_and_stamina()
+	
+	if not completed:
+		hit_flash($Control/Monster)
+		toggle_attacker()
+		
+		
+	
 func hit_flash(node: CanvasItem):
 	
 	var tween = create_tween()
@@ -288,3 +322,15 @@ func _on_weapon_1_pressed() -> void:
 
 func _on_weapon_2_pressed() -> void:
 	player_weapon_attack(Game.playerData.equipment.weapon2.name)
+
+
+func _on_special_1_pressed() -> void:
+	player_special_attack(Game.playerData.abilities.special1)
+
+
+func _on_special_2_pressed() -> void:
+	player_special_attack(Game.playerData.abilities.special1)
+
+
+func _on_special_3_pressed() -> void:
+	player_special_attack(Game.playerData.abilities.special1)

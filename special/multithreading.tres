@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpecialAttack" format=3 uid="uid://dl853noov265l"]
+
+[ext_resource type="Texture2D" uid="uid://b7ntgq0kh3fky" path="res://assets/special/multithreading.png" id="1_hrjv4"]
+[ext_resource type="Script" uid="uid://djqnrf8f5wqc4" path="res://scripts/special_attack.gd" id="2_i2tkx"]
+[ext_resource type="Resource" uid="uid://d3tqbaeepccqy" path="res://skills/cs201.tres" id="3_0xy8r"]
+
+[resource]
+script = ExtResource("2_i2tkx")
+name = "Multithreading"
+description = "Concurrency method for optimizing code, good against technical problems."
+skill = ExtResource("3_0xy8r")
+texture = ExtResource("1_hrjv4")
+min_damage = 10
+max_damage = 25
+technical_pct = 100
+metadata/_custom_type_script = "uid://djqnrf8f5wqc4"

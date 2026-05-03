@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://ddxxw2v2rld6k"]
+
+[ext_resource type="Script" uid="uid://buxlg2ng25wcq" path="res://scripts/skill.gd" id="1_dfs83"]
+[ext_resource type="Resource" uid="uid://fj6id2u3wmbt" path="res://skills/technical.tres" id="2_gku74"]
+
+[resource]
+script = ExtResource("1_dfs83")
+name = "CS 301"
+parents = Array[ExtResource("1_dfs83")]([ExtResource("2_gku74")])
+metadata/_custom_type_script = "uid://buxlg2ng25wcq"

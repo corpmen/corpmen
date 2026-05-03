@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpecialAttack" format=3 uid="uid://cpw0uhhi76a7n"]
+
+[ext_resource type="Script" uid="uid://djqnrf8f5wqc4" path="res://scripts/special_attack.gd" id="1_2repm"]
+
+[resource]
+script = ExtResource("1_2repm")
+name = "TPS Reports"
+description = "Useless reports that are a total waste of everyone's time."
+alignment = 1
+min_damage = 10
+max_damage = 17
+swe_pct = 100
+sdet_pct = 65
+ai_pct = 100
+metadata/_custom_type_script = "uid://djqnrf8f5wqc4"

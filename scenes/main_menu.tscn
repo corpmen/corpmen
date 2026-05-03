@@ -68,7 +68,7 @@ uppercase = true
 [node name="NameA" type="Label" parent="control/tabs/Status/General" unique_id=727257217]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Stephen"
 uppercase = true
 
@@ -82,7 +82,7 @@ uppercase = true
 [node name="ClassA" type="Label" parent="control/tabs/Status/General" unique_id=1290474434]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Software Engineer"
 uppercase = true
 
@@ -96,7 +96,7 @@ uppercase = true
 [node name="HitpointsA" type="Label" parent="control/tabs/Status/General" unique_id=346699821]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "0"
 uppercase = true
 
@@ -110,21 +110,21 @@ uppercase = true
 [node name="StaminaA" type="Label" parent="control/tabs/Status/General" unique_id=1885837381]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "0"
 uppercase = true
 
-[node name="Cash" type="Label" parent="control/tabs/Status/General" unique_id=389359521]
+[node name="Experience" type="Label" parent="control/tabs/Status/General" unique_id=813872993]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
-text = "Cash"
+text = "Experience"
 uppercase = true
 
-[node name="CashA" type="Label" parent="control/tabs/Status/General" unique_id=188983696]
+[node name="ExperienceA" type="Label" parent="control/tabs/Status/General" unique_id=1924127144]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "0"
 uppercase = true
 
@@ -138,21 +138,21 @@ uppercase = true
 [node name="LevelA" type="Label" parent="control/tabs/Status/General" unique_id=237874470]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "1"
 uppercase = true
 
-[node name="Experience" type="Label" parent="control/tabs/Status/General" unique_id=813872993]
+[node name="Cash" type="Label" parent="control/tabs/Status/General" unique_id=389359521]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
-text = "Experience"
+text = "Cash"
 uppercase = true
 
-[node name="ExperienceA" type="Label" parent="control/tabs/Status/General" unique_id=1924127144]
+[node name="CashA" type="Label" parent="control/tabs/Status/General" unique_id=188983696]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "0"
 uppercase = true
 
@@ -171,7 +171,7 @@ text = "Strength"
 
 [node name="StrengthA" type="Label" parent="control/tabs/Status/Attributes" unique_id=236368075]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -182,7 +182,7 @@ text = "Dexterity"
 
 [node name="DexterityA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1613857989]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -193,7 +193,7 @@ text = "Constitution"
 
 [node name="ConstitutionA" type="Label" parent="control/tabs/Status/Attributes" unique_id=889968716]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -204,7 +204,7 @@ text = "Intelligence"
 
 [node name="IntelligenceA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1277655488]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -215,7 +215,7 @@ text = "Wisdom"
 
 [node name="WisdomA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1345584739]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -226,7 +226,7 @@ text = "Charisma"
 
 [node name="CharismaA" type="Label" parent="control/tabs/Status/Attributes" unique_id=1028931328]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -245,7 +245,7 @@ text = "Karma"
 
 [node name="KarmaA" type="Label" parent="control/tabs/Status/Wellness" unique_id=395165610]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -256,7 +256,7 @@ text = "Satisfaction"
 
 [node name="SatisfactionA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1167377660]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -267,7 +267,7 @@ text = "Stress"
 
 [node name="StressA" type="Label" parent="control/tabs/Status/Wellness" unique_id=858411197]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -278,7 +278,7 @@ text = "Integrity"
 
 [node name="IntegrityA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1776491710]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -289,7 +289,7 @@ text = "Popularity"
 
 [node name="PopularityA" type="Label" parent="control/tabs/Status/Wellness" unique_id=1938685775]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 
@@ -389,6 +389,17 @@ columns = 4
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Left" type="GridContainer" parent="control/tabs/Skills" unique_id=1878317226]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Special1" type="MenuButton" parent="control/tabs/Skills/Left" unique_id=1435297328]
+layout_mode = 2
+
+[node name="Special2" type="MenuButton" parent="control/tabs/Skills/Left" unique_id=988417047]
+layout_mode = 2
 
 [node name="main" type="HBoxContainer" parent="control" unique_id=518136459]
 layout_mode = 0

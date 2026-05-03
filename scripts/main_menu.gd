@@ -67,7 +67,8 @@ func update_status() -> void:
 	$control/tabs/Status/General/LevelA.text = str(
 		Game.playerData.get_level())
 		
-	$control/tabs/Status/General/ExperienceA.text = str(Game.playerData.xp)
+	$control/tabs/Status/General/ExperienceA.text = \
+	 	Game.playerData.xp_as_string()
 	
 	$control/tabs/Status/General/CashA.text = str(Game.playerData.cash)
 	
@@ -208,6 +209,12 @@ func update_weapon_slots() -> void:
 		weapon2.disabled = true
 		
 
+func update_special_slots() -> void:
+	
+	var special1 = $control/tabs/Skills/Left/Special1
+	var special2 = $control/tabs/Skills/Left/Special2
+	
+	
 func show_feedback(feedback: String) -> void:
 	
 	var label = $control/Feedback
