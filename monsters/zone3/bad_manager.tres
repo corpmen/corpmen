@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cpw0uhhi76a7n" path="res://monster_special/tps_reports.tres" id="3_4r1ir"]
 [ext_resource type="Resource" uid="uid://qo4wtyxhwojs" path="res://monster_special/impossible_deadline.tres" id="3_4rgv4"]
 [ext_resource type="Resource" uid="uid://obtgcqp75agl" path="res://monster_special/useless_meeting.tres" id="5_2jo8h"]
+[ext_resource type="Texture2D" uid="uid://qdu5h7itiyiu" path="res://assets/characters/manager.png" id="7_4r1ir"]
 
 [sub_resource type="Resource" id="Resource_ch2dl"]
 script = ExtResource("1_6ambm")
@@ -19,7 +20,9 @@ metadata/_custom_type_script = "uid://d1gqv1v7hqk5k"
 [resource]
 script = ExtResource("1_7ral6")
 monster_class = 3
+zone = 1
 name = "Bad Manager"
+texture = ExtResource("7_4r1ir")
 hitpoints_max = 40
 hitpoints = 40
 stamina_max = 15

@@ -7,4 +7,4 @@ extends Resource
 @export var cost: int
 @export var special: SpecialAttack
 @export var parents: Array[Skill]
-@export var effectiveness: Array[Constants.MONSTER_CLASS]
+#@export var effectiveness: Array[Constants.MONSTER_CLASS]

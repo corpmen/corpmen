@@ -4,6 +4,7 @@ extends Resource
 
 # main
 @export var name: String = ""
+@export var texture: Texture2D
 @export var hitpoints_max: int = 1
 @export var hitpoints: int = 1
 @export var stamina_max: int = 1

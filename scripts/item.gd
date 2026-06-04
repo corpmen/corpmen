@@ -7,7 +7,7 @@ extends Resource
 @export var type: Constants.ITEM_TYPE
 @export var quantity: int = 1
 @export var stackable: bool = false
-@export var max: int
+@export var max_stackable: int
 @export var hitpoints: int
 @export var stamina: int
 @export var durability: int

@@ -15,6 +15,8 @@ extends Character
 
 @export var resurrections: int = 0
 
+var current_zone_id: int = 0
+
 #var slots_max = Constants.DEFAULT_MAX_SLOTS
 
 # storage
@@ -25,20 +27,20 @@ func test_items() -> void:
 
 func get_level() -> int:
 	
-	var level = 1
+	var current_level = 1
 	
-	while level < Constants.MAX_LEVEL and xp >= get_xp_for_level(level + 1):
-		level += 1
+	while current_level < Constants.MAX_LEVEL and xp >= get_xp_for_level(current_level + 1):
+		current_level += 1
 	
-	return level
+	return current_level
 	
 	
-func get_xp_for_level(level: int) -> int:
+func get_xp_for_level(next_level: int) -> int:
 	
-	if level > Constants.MAX_LEVEL:
-		level = Constants.MAX_LEVEL
+	if next_level > Constants.MAX_LEVEL:
+		next_level = Constants.MAX_LEVEL
 
-	return int(100 * pow(level, Constants.FIBONACCI_MULTIPLIER))
+	return int(100 * pow(next_level, Constants.FIBONACCI_MULTIPLIER))
 	
 
 func xp_as_string() -> String:
@@ -131,18 +133,20 @@ func special_attack(attack: SpecialAttack, monster: Monster) -> String:
 	
 	var damage = Game.rng.randi_range(attack.min_damage, attack.max_damage)
 	
-	if monster.monster_class == monster.TECHNICAL:
-		damage = int(damage * attack.technical_pct/100)
-	elif monster.monster_class == monster.PROJECT:
+	if monster.monster_class == monster.CLASSES.TECHNICAL:
+		damage = damage * attack.technical_pct/100
+	elif monster.monster_class == monster.CLASSES.PROJECT:
 		damage = int(damage * attack.project_pct/100)
-	elif monster.monster_class == monster.TASK:
+	elif monster.monster_class == monster.CLASSES.TASK:
 		damage = int(damage * attack.task_pct/100)
-	elif monster.monster_class == monster.BUSINESS:
+	elif monster.monster_class == monster.CLASSES.BUSINESS:
 		damage = int(damage * attack.business_pct/100)
-	elif monster.monster_class == monster.MANAGEMENT:
+	elif monster.monster_class == monster.CLASSES.MANAGEMENT:
 		damage = int(damage * attack.management_pct/100)
-	elif monster.monster_class == monster.WORK:
+	elif monster.monster_class == monster.CLASSES.WORK:
 		damage = int(damage * attack.work_pct/100)
+	
+	monster.apply_damage(damage)
 	
 	if damage == 0:
 		return "%s: %s missed" % [name, attack.name]

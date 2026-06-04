@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Monster" format=3 uid="uid://bvw3fphpblw48"]
+
+[ext_resource type="Script" uid="uid://be233umlwsbn2" path="res://scripts/monster.gd" id="1_icdw0"]
+[ext_resource type="Texture2D" uid="uid://fsqtmexubrem" path="res://assets/characters/bug.png" id="2_nru1p"]
+
+[resource]
+script = ExtResource("1_icdw0")
+monster_class = 1
+zone = 1
+name = "Software Bug"
+texture = ExtResource("2_nru1p")
+hitpoints_max = 12
+hitpoints = 12
+xp = 15
+cash = 25
+strength = 8
+dexterity = 10
+constitution = 10
+intelligence = 12
+wisdom = 8
+charisma = 4
+metadata/_custom_type_script = "uid://be233umlwsbn2"

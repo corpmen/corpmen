@@ -7,8 +7,8 @@ signal battle_finished()
 const slap = preload("res://assets/attacks/slap.png")
 const punch = preload("res://assets/attacks/punch.png")
 
-const bm = preload("res://monsters/bad_manager.tres")
-
+#const bm = preload("res://monsters/bad_manager.tres")
+#const sb = preload("res://monsters/zone1/software_bug.tres")
 
 #var attack_menu		= null
 var monster 		= null
@@ -19,8 +19,10 @@ func _ready() -> void:
 	
 	# randomize monsters based on map location
 	#monster = Monster.new("bad manager")
+	random_monster()
 	
-	monster = bm
+	$Control/Monster.texture = monster.texture
+	$Control/MonsterStatus/GridContainer/Monster1.text = monster.name
 	
 	#attack_menu = AttackMenu.instantiate()
 		
@@ -44,6 +46,19 @@ func _ready() -> void:
 	init_quick_menu()
 
 
+func random_monster() -> void:
+	
+	var path = "res://monsters/zone%d" % [Game.playerData.current_zone_id]
+	
+	var monsters = DirAccess.get_files_at(path)
+	
+	var index = Game.rng.randi_range(0, monsters.size() - 1)
+	
+	var random_monster = load("%s/%s" % [path, monsters[index]])
+
+	monster = random_monster
+	
+	
 func init_quick_menu() -> void:
 	
 	var melee1 = $Control/Actions/Melee1
@@ -83,7 +98,6 @@ func init_quick_menu() -> void:
 		special3.tooltip_text = Game.playerData.abilities.special3.description
 			
 		
-
 func _on_attack_pressed() -> void:
 	
 	#if attack_menu != null:

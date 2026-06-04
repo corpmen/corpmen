@@ -248,14 +248,6 @@ const SKILLS = {
 	}
 }
 
-enum MONSTER_CLASS {
-	BUSINESS,
-	TECHNICAL,
-	PROJECT,
-	MANAGEMENT,
-	WORK,
-}
-
 const MONSTERS = {
 	"bad manager": {
 		"hitpoints": 20, "hitpoints_max": 20, "stamina": 20, "stamina_max": 20,

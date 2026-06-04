@@ -2,21 +2,30 @@ class_name Monster
 
 extends Character
 
-@export var monster_class: Constants.MONSTER_CLASS
+@export var monster_class: CLASSES
 @export var immunity: Constants.ATTACK_TYPES
+@export var zone: int
 
-const TECHNICAL: int = 0
-const PROJECT: int = 1
-const TASK: int = 2
-const BUSINESS: int = 3
-const MANAGEMENT: int = 4
-const WORK: int = 5
+
+enum CLASSES {
+	BUSINESS,
+	TECHNICAL,
+	PROJECT,
+	MANAGEMENT,
+	WORK,
+	TASK,
+}
 	
 
 func attack() -> String:
 
-	if Game.rng.randi() % 2 == 1:
-		return special_attack()
+	if Game.rng.randi() % 3 == 1:
+		
+		if abilities.specials.size() == 0:
+			return basic_attack()
+		else:
+			return special_attack()
+			
 	else:
 		return basic_attack()
 
@@ -48,23 +57,28 @@ func special_attack() -> String:
 
 	var damage = Constants.MIN_DAMAGE
 	var length = abilities.specials.size()
-	
-	var i = Game.rng.randi_range(0, length - 1)
+	var special_name: String = ""
 	
 	var keys = abilities.specials.keys()
 	
-	var obj = abilities.specials[keys[i]]
-	
-	#TODO: check if key exists
-	
-	damage += Game.rng.randi_range(obj.min_damage, obj.max_damage)	
-	
-	Game.playerData.apply_damage(damage)
-	
+	if length != 0:
+		
+		var i = Game.rng.randi_range(0, length - 1)
+		
+		var obj = abilities.specials[keys[i]]
+		
+		special_name = keys[i]
+		
+		#TODO: check if key exists
+		
+		damage += Game.rng.randi_range(obj.min_damage, obj.max_damage)	
+		
+		Game.playerData.apply_damage(damage)
+		
 	if damage == 0:
-		return "%s: %s missed" % [name, keys[i]]
+		return "%s: %s missed" % [name, special_name]
 	else:
-		return "%s: %s for %d damage" % [name, keys[i], damage]
+		return "%s: %s for %d damage" % [name, special_name, damage]
 
 
 func weapon_attack():

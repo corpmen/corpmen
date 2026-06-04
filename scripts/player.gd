@@ -2,13 +2,18 @@ extends CharacterBody2D
 
 const Battle = preload("res://scenes/battle.tscn")
 
-const speed = 300.0
+const MONSTER_ENCOUNTER_STEPS_MIN: float = 400.0
+const MONSTER_ENCOUNTER_STEPS_MAX: float = 1200.0
+
+@export var speed = 150
 
 var last_direction = DOWN
 
 var battle = null
 
 var is_battle = false
+
+var next_encounter_distance: float = 0.0
 
 
 enum {
@@ -32,6 +37,8 @@ enum {
 func _ready():
 	
 	$AnimatedSprite2D.play("idle_front");
+	
+	set_random_encounter_distance()
 
 
 func _physics_process(delta: float) -> void:
@@ -41,46 +48,52 @@ func _physics_process(delta: float) -> void:
 		player_idle();
 	
 
-func player_movement(_delta: float):
-		
-	if Input.is_action_just_pressed("ui_up"):
+func set_random_encounter_distance() -> void:
+	
+	next_encounter_distance = Game.rng.randf_range(\
+	  MONSTER_ENCOUNTER_STEPS_MIN, \
+	  MONSTER_ENCOUNTER_STEPS_MAX)
+	
+	
+func player_movement(delta: float):
+	
+	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = dir * speed
+	
+	if Input.is_action_pressed("ui_up"):
 		
 		last_direction = UP;
 		play_animation(WALK_UP);
-		velocity.x = 0;
-		velocity.y = -speed;
+
 		
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down"):
 		
 		last_direction = DOWN;
 		play_animation(WALK_DOWN);
-		velocity.x = 0;
-		velocity.y = speed;
+
 		
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left"):
 		
 		last_direction = LEFT;
 		play_animation(WALK_LEFT);
-		velocity.x = -speed;
-		velocity.y = 0;
+
 		
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_pressed("ui_right"):
 		
 		last_direction = RIGHT;
 		play_animation(WALK_RIGHT);
-		velocity.x = speed;
-		velocity.y = 0;
-		
-	else:
-		
-		velocity.x = 0;
-		velocity.y = 0;
 		
 	move_and_slide();
 	
+	next_encounter_distance -= velocity.length() * delta
+	
+	# todo: regenerate hitpoints more slowly
 	if velocity.x != 0 || velocity.y != 0:
 		Game.playerData.regenerate_hitpoints()
-		check_encounter()
+	
+	if next_encounter_distance <= 0:
+		battle_start()
+		set_random_encounter_distance()
 
 
 func player_idle():
@@ -115,20 +128,13 @@ func play_animation(direction):
 			$AnimatedSprite2D.play("walk_side")
 			
 	
-func check_encounter() -> void:
-
-	var roll = randf()
+func battle_start() -> void:
 	
-	if roll < Constants.LOOT_ENCOUNTER_CHANCE:
-		print("loot")
-		pass
-	elif roll < Constants.LOOT_ENCOUNTER_CHANCE + Constants.MONSTER_ENCOUNTER_CHANCE:
-	
-		if battle == null:
-			battle = Battle.instantiate()	
-			get_tree().root.add_child(battle)
-			is_battle = true
-			battle.battle_finished.connect(battle_completed)
+	if battle == null:
+		battle = Battle.instantiate()
+		get_tree().root.add_child(battle)
+		is_battle = true
+		battle.battle_finished.connect(battle_completed)
 			
 	
 func battle_completed() -> void:

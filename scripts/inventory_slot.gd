@@ -23,12 +23,12 @@ func set_quantity(count: int) -> void:
 		label.text = str(count)
 
 
-func get_index_from_name(name: String) -> int:
+func get_index_from_name(slot_name: String) -> int:
 	
-	if name.length() == 0:
+	if slot_name.length() == 0:
 		return -1
 		
-	var id = name.trim_prefix("slot")
+	var id = slot_name.trim_prefix("slot")
 	
 	return int(id)
 
